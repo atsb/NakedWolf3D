@@ -34,7 +34,6 @@
 		D901F50E0FC0DBCB0040C290 /* wl_text.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4E70FC0DBCB0040C290 /* wl_text.c */; };
 		D901F50F0FC0DBCB0040C290 /* id_sd.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4E90FC0DBCB0040C290 /* id_sd.c */; };
 		D901F5100FC0DBCB0040C290 /* wl_state.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4EB0FC0DBCB0040C290 /* wl_state.c */; };
-		D901F5110FC0DBCB0040C290 /* wl_shade.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4ED0FC0DBCB0040C290 /* wl_shade.c */; };
 		D901F5120FC0DBCB0040C290 /* wl_play.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4EE0FC0DBCB0040C290 /* wl_play.c */; };
 		D901F5130FC0DBCB0040C290 /* wl_parallax.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4EF0FC0DBCB0040C290 /* wl_parallax.c */; };
 		D901F5140FC0DBCB0040C290 /* wl_menu.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4F10FC0DBCB0040C290 /* wl_menu.c */; };
@@ -110,8 +109,6 @@
 		D901F4E90FC0DBCB0040C290 /* id_sd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = id_sd.c; path = ../id_sd.c; sourceTree = SOURCE_ROOT; };
 		D901F4EA0FC0DBCB0040C290 /* gp2x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gp2x.h; path = ../gp2x.h; sourceTree = SOURCE_ROOT; };
 		D901F4EB0FC0DBCB0040C290 /* wl_state.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wl_state.c; path = ../wl_state.c; sourceTree = SOURCE_ROOT; };
-		D901F4EC0FC0DBCB0040C290 /* wl_shade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wl_shade.h; path = ../wl_shade.h; sourceTree = SOURCE_ROOT; };
-		D901F4ED0FC0DBCB0040C290 /* wl_shade.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wl_shade.c; path = ../wl_shade.c; sourceTree = SOURCE_ROOT; };
 		D901F4EE0FC0DBCB0040C290 /* wl_play.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wl_play.c; path = ../wl_play.c; sourceTree = SOURCE_ROOT; };
 		D901F4EF0FC0DBCB0040C290 /* wl_parallax.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wl_parallax.c; path = ../wl_parallax.c; sourceTree = SOURCE_ROOT; };
 		D901F4F00FC0DBCB0040C290 /* wl_menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wl_menu.h; path = ../wl_menu.h; sourceTree = SOURCE_ROOT; };
@@ -230,8 +227,6 @@
 				D901F4E90FC0DBCB0040C290 /* id_sd.c */,
 				D901F4EA0FC0DBCB0040C290 /* gp2x.h */,
 				D901F4EB0FC0DBCB0040C290 /* wl_state.c */,
-				D901F4EC0FC0DBCB0040C290 /* wl_shade.h */,
-				D901F4ED0FC0DBCB0040C290 /* wl_shade.c */,
 				D901F4EE0FC0DBCB0040C290 /* wl_play.c */,
 				D901F4EF0FC0DBCB0040C290 /* wl_parallax.c */,
 				D901F4F00FC0DBCB0040C290 /* wl_menu.h */,
@@ -378,7 +373,6 @@
 				D901F50E0FC0DBCB0040C290 /* wl_text.c in Sources */,
 				D901F50F0FC0DBCB0040C290 /* id_sd.c in Sources */,
 				D901F5100FC0DBCB0040C290 /* wl_state.c in Sources */,
-				D901F5110FC0DBCB0040C290 /* wl_shade.c in Sources */,
 				D901F5120FC0DBCB0040C290 /* wl_play.c in Sources */,
 				2AD022F72802ED38007DDEB6 /* sdl_wrap.c in Sources */,
 				D901F5130FC0DBCB0040C290 /* wl_parallax.c in Sources */,

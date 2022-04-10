@@ -86,7 +86,7 @@ void VH_UpdateScreen (SDL_Surface *surface);
 #define VW_ScreenToScreen	VL_ScreenToScreen
 void	VW_MeasurePropString (const char *string, word *width, word *height);
 
-void    VH_Startup();
+void    VH_Startup(void);
 boolean FizzleFade (SDL_Surface *source, int x1, int y1,
     unsigned width, unsigned height, unsigned frames, boolean abortable);
 

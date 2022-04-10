@@ -192,12 +192,12 @@ void KeyboardSet(int key, boolean state);
 
 int KeyboardLookup(int key);
 
-void    IN_WaitAndProcessEvents();
-void    IN_ProcessEvents();
+void    IN_WaitAndProcessEvents(void);
+void    IN_ProcessEvents(void);
 
 int     IN_MouseButtons (void);
 
-boolean IN_JoyPresent();
+boolean IN_JoyPresent(void);
 void    IN_SetJoyCurrent(int joyIndex);
 int     IN_JoyButtons (void);
 void    IN_GetJoyDelta(int *dx,int *dy);
@@ -205,7 +205,7 @@ void    IN_GetJoyFineDelta(int *dx, int *dy);
 
 void    IN_StartAck(void);
 boolean IN_CheckAck (void);
-bool    IN_IsInputGrabbed();
-void    IN_CenterMouse();
+bool    IN_IsInputGrabbed(void);
+void    IN_CenterMouse(void);
 
 #endif

@@ -24,8 +24,6 @@
 #	define O_BINARY 0
 #endif
 
-#pragma pack(1)
-
 #if defined(_arch_dreamcast)
 #define YESBUTTONNAME "A"
 #define NOBUTTONNAME  "B"

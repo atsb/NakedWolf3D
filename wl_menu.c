@@ -15,7 +15,6 @@
 #endif
 
 #include "wl_def.h"
-#pragma hdrstop
 
 extern int lastgamemusicoffset;
 
@@ -310,7 +309,7 @@ static const char *ExtScanNames[] =   // Names corresponding to ExtScanCodes
     "Down", "Left", "Right", ""
 };
 
-/*#pragma warning 737 9
+/*
 static byte
                                         *ScanNames[] =          // Scan code names with single chars
                                         {
@@ -647,7 +646,6 @@ void
 BossKey (void)
 {
     int i,lastBlinkTime;
-    ControlInfo ci;
 
     SD_MusicOff ();
 

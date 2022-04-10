@@ -22,9 +22,7 @@
 
 #include "wl_def.h"
 
-#pragma	hdrstop
-
-#if _MSC_VER == 1200            // Visual C++ 6
+#if _MSC_VER
 	#define vsnprintf _vsnprintf
 #endif
 
