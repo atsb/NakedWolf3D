@@ -99,9 +99,6 @@
     <ClCompile Include="wl_scale.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="wl_shade.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="wl_state.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -215,9 +212,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="wl_menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="wl_shade.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="dc\dc_main.h">

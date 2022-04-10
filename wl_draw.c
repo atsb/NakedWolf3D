@@ -5,7 +5,6 @@
 
 #include "wl_cloudsky.h"
 #include "wl_atmos.h"
-#include "wl_shade.h"
 
 /*
 =============================================================================
@@ -277,7 +276,6 @@ int16_t CalcHeight (void)
 //
 // calculate perspective ratio
 //
-#ifdef BANDEDHOLOWALLS
     if (nx < MINDIST)
         nx = MINDIST - ((nx / 36) & 3);
 
@@ -285,12 +283,6 @@ int16_t CalcHeight (void)
 
     if (nx < MINDIST)
         height = 0;
-#else
-    if (nx < MINDIST)
-        nx = MINDIST;             // don't let divide overflow
-
-    height = (int16_t)(heightnumerator / (nx >> 8));
-#endif
 
     return height;
 }
@@ -318,10 +310,6 @@ void ScalePost (void)
     }
 #endif
 
-#ifdef USE_SHADING
-    byte *curshades = shadetable[GetShade(wallheight[postx])];
-#endif
-
     ywcount = yd = wallheight[postx] >> 3;
     if(yd <= 0) yd = 100;
 
@@ -344,11 +332,8 @@ void ScalePost (void)
     }
     if(yw < 0) return;
 
-#ifdef USE_SHADING
-    col = curshades[postsource[yw]];
-#else
     col = postsource[yw];
-#endif
+
     yendoffs = yendoffs * bufferPitch + postx;
     while(yoffs <= yendoffs)
     {
@@ -363,11 +348,8 @@ void ScalePost (void)
             }
             while(ywcount <= 0);
             if(yw < 0) break;
-#ifdef USE_SHADING
-            col = curshades[postsource[yw]];
-#else
+
             col = postsource[yw];
-#endif
         }
         yendoffs -= bufferPitch;
     }
@@ -701,17 +683,11 @@ void VGAClearScreen (void)
 
     int y;
     byte *dest = vbuf;
-#ifdef USE_SHADING
-    for(y = 0; y < viewheight / 2; y++, dest += bufferPitch)
-        memset(dest, shadetable[GetShade((viewheight / 2 - y) << 3)][ceiling], viewwidth);
-    for(; y < viewheight; y++, dest += bufferPitch)
-        memset(dest, shadetable[GetShade((y - viewheight / 2) << 3)][0x19], viewwidth);
-#else
+
     for(y = 0; y < viewheight / 2; y++, dest += bufferPitch)
         memset(dest, ceiling, viewwidth);
     for(; y < viewheight; y++, dest += bufferPitch)
         memset(dest, 0x19, viewwidth);
-#endif
 }
 
 //==========================================================================
@@ -775,9 +751,6 @@ typedef struct
                shapenum;
     short      flags;          // this must be changed to uint32_t, when you
                                // you need more than 16-flags for drawing
-#ifdef USE_DIR3DSPR
-    statobj_t *transsprite;
-#endif
 } visobj_t;
 
 visobj_t vislist[MAXVISABLE];
@@ -816,13 +789,6 @@ void DrawScaleds (void)
 
         if (!visptr->viewheight)
             continue;                                               // to close to the object
-
-#ifdef USE_DIR3DSPR
-        if(statptr->flags & FL_DIR_MASK)
-            visptr->transsprite=statptr;
-        else
-            visptr->transsprite=NULL;
-#endif
 
         if (visptr < &vislist[MAXVISABLE-1])    // don't let it overflow
         {
@@ -871,9 +837,6 @@ void DrawScaleds (void)
             if (visptr < &vislist[MAXVISABLE-1])    // don't let it overflow
             {
                 visptr->flags = (short) obj->flags;
-#ifdef USE_DIR3DSPR
-                visptr->transsprite = NULL;
-#endif
                 visptr++;
             }
             obj->flags |= FL_VISABLE;
@@ -905,12 +868,7 @@ void DrawScaleds (void)
         //
         // draw farthest
         //
-#ifdef USE_DIR3DSPR
-        if (farthest->transsprite)
-            Transform3DShape(farthest->transsprite);
-        else
-#endif
-            ScaleShape(farthest->viewx, farthest->shapenum, farthest->viewheight, farthest->flags);
+        ScaleShape(farthest->viewx, farthest->shapenum, farthest->viewheight, farthest->flags);
 
         farthest->viewheight = 32000;
     }
@@ -1630,40 +1588,12 @@ void ThreeDRefresh (void)
 // follow the walls from there to the right, drawing as we go
 //
     VGAClearScreen ();
-#if defined(USE_FEATUREFLAGS) && defined(USE_STARSKY)
-    if(GetFeatureFlags() & FF_STARSKY)
-        DrawStarSky();
-#endif
-
     WallRefresh ();
-
-#if defined(USE_FEATUREFLAGS) && defined(USE_PARALLAX)
-    if(GetFeatureFlags() & FF_PARALLAXSKY)
-        DrawParallax();
-#endif
-
-#if defined(USE_FEATUREFLAGS) && defined(USE_CLOUDSKY)
-    if(GetFeatureFlags() & FF_CLOUDSKY)
-        DrawCloudPlanes ();
-#endif
-
-#ifdef USE_FLOORCEILINGTEX
-    DrawPlanes ();
-#endif
 
 //
 // draw all the scaled images
 //
     DrawScaleds();                  // draw scaled stuff
-
-#if defined(USE_FEATUREFLAGS) && defined(USE_RAIN)
-    if(GetFeatureFlags() & FF_RAIN)
-        DrawRain();
-#endif
-#if defined(USE_FEATUREFLAGS) && defined(USE_SNOW)
-    if(GetFeatureFlags() & FF_SNOW)
-        DrawSnow();
-#endif
 
     DrawPlayerWeapon ();    // draw player's hands
 

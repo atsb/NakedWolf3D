@@ -32,14 +32,6 @@ Main features:
       Digitized sounds play on 8 channels! So in a fire fight you will
       always hear, when a guard opens the door behind you ;)
 
- - Higher screen resolutions:
-      Aside from the original 320x200 resolution, Wolf4SDL currently
-      supports any resolutions being multiples of 320x200 or 320x240,
-      the default being 640x400.
-      Unlike some other ports, Wolf4SDL does NOT apply any bilinear
-      or similar filtering, so the graphics are NOT blurred but
-      pixelated just as we love it.
-
  - Fully playable with only a game controller:
       Wolf4SDL can be played completely without a keyboard. At least two
       buttons are required (shoot/YES and open door/NO), but five or more

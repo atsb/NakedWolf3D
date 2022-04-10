@@ -37,10 +37,6 @@ unsigned        spearangle;
 boolean         spearflag;
 #endif
 
-#ifdef USE_FEATUREFLAGS
-int ffDataTopLeft, ffDataTopRight, ffDataBottomLeft, ffDataBottomRight;
-#endif
-
 //
 // ELEVATOR BACK MAPS - REMEMBER (-1)!!
 //
@@ -303,8 +299,6 @@ static void ScanInfoPlane(void)
 #ifdef SPEAR
                 case 73:                        // TRUCK AND SPEAR!
                 case 74:
-#elif defined(USE_DIR3DSPR)                     // just for the example
-                case 73:
 #endif
                     SpawnStatic(x,y,tile-23);
                     break;
@@ -665,19 +659,6 @@ void SetupGameLevel (void)
 
     mapwidth = mapheaderseg[mapnum]->width;
     mapheight = mapheaderseg[mapnum]->height;
-
-#ifdef USE_FEATUREFLAGS
-    // Temporary definition to make things clearer
-    #define MXX MAPSIZE - 1
-
-    // Read feature flags data from map corners and overwrite corners with adjacent tiles
-    ffDataTopLeft     = MAPSPOT(0,   0,   0); MAPSPOT(0,   0,   0) = MAPSPOT(1,       0,       0);
-    ffDataTopRight    = MAPSPOT(MXX, 0,   0); MAPSPOT(MXX, 0,   0) = MAPSPOT(MXX,     1,       0);
-    ffDataBottomRight = MAPSPOT(MXX, MXX, 0); MAPSPOT(MXX, MXX, 0) = MAPSPOT(MXX - 1, MXX,     0);
-    ffDataBottomLeft  = MAPSPOT(0,   MXX, 0); MAPSPOT(0,   MXX, 0) = MAPSPOT(0,       MXX - 1, 0);
-
-    #undef MXX
-#endif
 
 //
 // copy the wall data to a data segment array

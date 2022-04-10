@@ -6,20 +6,6 @@
 
 #include "wl_def.h"
 
-#ifdef USE_FEATUREFLAGS
-
-// The lower left tile of every map determines the start texture of the parallax sky.
-int GetParallaxStartTexture (void)
-{
-    int startTex = ffDataBottomLeft;
-
-    assert(startTex >= 0 && startTex < PMSpriteStart);
-
-    return startTex;
-}
-
-#else
-
 int GetParallaxStartTexture (void)
 {
     int startTex;
@@ -34,8 +20,6 @@ int GetParallaxStartTexture (void)
 
     return startTex;
 }
-
-#endif
 
 /*
 ====================

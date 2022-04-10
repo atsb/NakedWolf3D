@@ -31,9 +31,6 @@
 
 #endif
 
-//#define USE_FEATUREFLAGS    // Enables the level feature flags (see bottom of wl_def.h)
-//#define USE_SHADING         // Enables shading support (see wl_shade.c)
-//#define USE_DIR3DSPR        // Enables directional 3d sprites
 //#define USE_FLOORCEILINGTEX // Enables texture-mapped floors and ceilings (see wl_plane.c)
 //#define USE_MULTIFLATS      // Enables floor and ceiling textures stored in the third mapplane
 //#define USE_PARALLAX 16     // Enables parallax sky with 16 textures per sky (see wl_parallax.c)
@@ -57,7 +54,5 @@
 #define ADDEDFIX              // Post-revision 262 fixes described in http://diehardwolfers.areyep.com/viewtopic.php?t=6693
 
 #define FIXCALCROTATE         // Apply a modified version of Ginyu's fix to make CalcRotate more accurate at high resolutions
-
-//#define BANDEDHOLOWALLS     // Use the old DOS-style "banded" wall drawing behaviour when inside walls
 
 #endif

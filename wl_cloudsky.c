@@ -82,20 +82,6 @@ byte       skyc[65536L];
 fixed      cloudx,cloudy;
 cloudsky_t *curSky;
 
-#ifdef USE_FEATUREFLAGS
-
-// The lower left tile of every map determines the used cloud sky definition from cloudSkys.
-int GetCloudSkyDefID (void)
-{
-    int skyID = ffDataBottomLeft;
-
-    assert(skyID >= 0 && skyID < lengthof(cloudSkys));
-
-    return skyID;
-}
-
-#else
-
 int GetCloudSkyDefID (void)
 {
     int skyID;
@@ -119,8 +105,6 @@ int GetCloudSkyDefID (void)
 
     return skyID;
 }
-
-#endif
 
 void SplitS(unsigned size,unsigned x1,unsigned y1,unsigned x2,unsigned y2)
 {

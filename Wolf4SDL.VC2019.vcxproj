@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>Wolf4SDL</ProjectName>
+    <ProjectName>PlainWolf3D</ProjectName>
     <ProjectGuid>{411B026A-F58B-4E25-840B-4FE67710F762}</ProjectGuid>
     <RootNamespace>Wolf4SDL</RootNamespace>
   </PropertyGroup>
@@ -191,7 +191,6 @@
     <ClCompile Include="wl_plane.c" />
     <ClCompile Include="wl_play.c" />
     <ClCompile Include="wl_scale.c" />
-    <ClCompile Include="wl_shade.c" />
     <ClCompile Include="wl_state.c" />
     <ClCompile Include="wl_text.c" />
     <ClCompile Include="wl_utils.c" />
@@ -229,7 +228,6 @@
     <ClInclude Include="wl_cloudsky.h" />
     <ClInclude Include="wl_def.h" />
     <ClInclude Include="wl_menu.h" />
-    <ClInclude Include="wl_shade.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="win\Wolf4SDL.rc" />

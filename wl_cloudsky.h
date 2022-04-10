@@ -52,9 +52,6 @@ extern const int  numColorMaps;
 
 void InitSky (void);
 void DrawCloudPlanes (void);
-
-#ifndef USE_FEATUREFLAGS
 int  GetCloudSkyDefID (void);
-#endif
 
 #endif

@@ -253,27 +253,6 @@ typedef enum
     FL_FIRSTATTACK      = 0x00000020,
     FL_AMBUSH           = 0x00000040,
     FL_NONMARK          = 0x00000080,
-    FL_FULLBRIGHT       = 0x00000100,
-#ifdef USE_DIR3DSPR
-    // you can choose one of the following values in wl_act1.cpp
-    // to make a static sprite a directional 3d sprite
-    // (see example at the end of the statinfo array)
-    FL_DIR_HORIZ_MID    = 0x00000200,
-    FL_DIR_HORIZ_FW     = 0x00000400,
-    FL_DIR_HORIZ_BW     = 0x00000600,
-    FL_DIR_VERT_MID     = 0x00000a00,
-    FL_DIR_VERT_FW      = 0x00000c00,
-    FL_DIR_VERT_BW      = 0x00000e00,
-
-    // these values are just used to improve readability of code
-    FL_DIR_NONE         = 0x00000000,
-    FL_DIR_POS_MID      = 0x00000200,
-    FL_DIR_POS_FW       = 0x00000400,
-    FL_DIR_POS_BW       = 0x00000600,
-    FL_DIR_POS_MASK     = 0x00000600,
-    FL_DIR_VERT_FLAG    = 0x00000800,
-    FL_DIR_MASK         = 0x00000e00,
-#endif
     // next free bit is   0x00001000
 } objflag_t;
 
@@ -1177,9 +1156,6 @@ typedef struct
 
 void ScaleShape (int xcenter, int shapenum, int height, uint32_t flags);
 void SimpleScaleShape (int xcenter, int shapenum, int height);
-#ifdef USE_DIR3DSPR
-void Transform3DShape (statobj_t *statptr);
-#endif
 
 /*
 =============================================================================
@@ -1453,57 +1429,6 @@ void GP2X_ButtonUp (int button);
 	    sprintf(string, "%ld", value);
 	    return string;
     }
-#endif
-
-
-/*
-=============================================================================
-
-                           FEATURE DEFINITIONS
-
-=============================================================================
-*/
-
-#ifdef USE_FEATUREFLAGS
-    // The currently available feature flags
-    #define FF_STARSKY      0x0001
-    #define FF_PARALLAXSKY  0x0002
-    #define FF_CLOUDSKY     0x0004
-    #define FF_RAIN         0x0010
-    #define FF_SNOW         0x0020
-
-    // The ffData... variables contain the 16-bit values of the according corners of the current level.
-    // The corners are overwritten with adjacent tiles after initialization in SetupGameLevel
-    // to avoid interpretation as e.g. doors.
-    extern int ffDataTopLeft, ffDataTopRight, ffDataBottomLeft, ffDataBottomRight;
-
-    /*************************************************************
-     * Current usage of ffData... variables:
-     * ffDataTopLeft:     lower 8-bit: ShadeDefID
-     * ffDataTopRight:    FeatureFlags
-     * ffDataBottomLeft:  CloudSkyDefID or ParallaxStartTexture
-     * ffDataBottomRight: high byte: ceiling texture - low byte: floor texture
-     *************************************************************/
-
-    // The feature flags are stored as a wall in the upper right corner of each level
-    static inline word GetFeatureFlags (void)
-    {
-        return ffDataTopRight;
-    }
-
-#endif
-
-#ifdef USE_FLOORCEILINGTEX
-    extern byte    *ceilingsource,*floorsource;
-
-    void DrawPlanes (void);
-#ifndef USE_MULTIFLATS
-    void GetFlatTextures (void);
-#endif
-#endif
-
-#ifdef USE_PARALLAX
-    void DrawParallax (void);
 #endif
 
 #endif

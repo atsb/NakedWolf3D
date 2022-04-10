@@ -12,13 +12,8 @@ byte    *ceilingsource,*floorsource;
 #ifndef USE_MULTIFLATS
 void GetFlatTextures (void)
 {
-#ifdef USE_FEATUREFLAGS
-    ceilingsource = PM_GetPage(ffDataBottomRight >> 8);
-    floorsource = PM_GetPage(ffDataBottomRight & 0xff);
-#else
     ceilingsource = PM_GetPage(0);
     floorsource = PM_GetPage(1);
-#endif
 }
 #endif
 
@@ -53,9 +48,6 @@ void DrawSpan (int16_t x1, int16_t x2, int16_t height)
     if (!count)
         return;                                                 // nothing to draw
 
-#ifdef USE_SHADING
-    shade = shadetable[GetShade(height << 3)];
-#endif
     dest = vbuf + ylookup[centery - 1 - height] + x1;
     rowofs = ylookup[(height << 1) + 1];                        // toprow to bottomrow delta
 
@@ -120,11 +112,7 @@ void DrawSpan (int16_t x1, int16_t x2, int16_t height)
                     lastceilingpage = ceilingpage;
                     ceilingsource = PM_GetPage(ceilingpage);
                 }
-#ifdef USE_SHADING
-                *dest = shade[ceilingsource[texture]];
-#else
                 *dest = ceilingsource[texture];
-#endif
             }
 
             //
@@ -137,11 +125,7 @@ void DrawSpan (int16_t x1, int16_t x2, int16_t height)
                     lastfloorpage = floorpage;
                     floorsource = PM_GetPage(floorpage);
                 }
-#ifdef USE_SHADING
-                dest[rowofs] = shade[floorsource[texture]];
-#else
                 dest[rowofs] = floorsource[texture];
-#endif
             }
         }
 
@@ -180,9 +164,6 @@ void DrawSpan (int16_t x1, int16_t x2, int16_t height)
     if (!count)
         return;                                         // nothing to draw
 
-#ifdef USE_SHADING
-    shade = shadetable[GetShade(height << 3)];
-#endif
     dest = vbuf + ylookup[centery - 1 - height] + x1;
     rowofs = ylookup[(height << 1) + 1];                // toprow to bottomrow delta
 
@@ -203,13 +184,8 @@ void DrawSpan (int16_t x1, int16_t x2, int16_t height)
 	{
 		texture = ((xfrac >> FIXED2TEXSHIFT) & TEXTUREMASK) + (~(yfrac >> (FIXED2TEXSHIFT + TEXTURESHIFT)) & (TEXTURESIZE - 1));
 
-#ifdef USE_SHADING
-        *dest = shade[ceilingsource[texture]];
-        dest[rowofs] = shade[floorsource[texture]];
-#else
         *dest = ceilingsource[texture];
         dest[rowofs] = floorsource[texture];
-#endif
 		dest++;
 		xfrac += xstep;
 		yfrac += ystep;
