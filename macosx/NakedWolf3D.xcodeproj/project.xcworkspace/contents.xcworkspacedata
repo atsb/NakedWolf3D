@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/ats/Development/GitHub/NakedWolf3D/macosx/NakedWolf3D.xcodeproj">
    </FileRef>
 </Workspace>

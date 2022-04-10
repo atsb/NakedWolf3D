@@ -1360,8 +1360,6 @@ restartgame:
         }
 #endif
 
-        DrawLevel ();                        // ADDEDFIX 5 -  Chris Chokan
-
         ingame = true;
         if(loadedgame)
         {
@@ -1377,8 +1375,6 @@ restartgame:
             died = false;
             fizzlein = true;
         }
-
-//        DrawLevel ();                     // ADDEDFIX 5 - moved up  Chris Chokan
 
 #ifdef SPEAR
 startplayloop:

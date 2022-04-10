@@ -701,9 +701,6 @@ void GiveKey (int key)
 */
 void GetBonus (statobj_t *check)
 {
-    if (playstate == ex_died)   // ADDEDFIX 31 - Chris
-        return;
-
     switch (check->itemnumber)
     {
         case    bo_firstaid:

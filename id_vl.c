@@ -17,7 +17,7 @@
 #endif
 
 boolean fullscreen = true;
-boolean usedoublebuffering = true;
+boolean usedoublebuffering = false;
 unsigned screenWidth = 320;
 unsigned screenHeight = 200;
 int      screenBits = -1;      // use "best" color depth according to libSDL

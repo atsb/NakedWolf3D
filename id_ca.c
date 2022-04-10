@@ -1021,9 +1021,6 @@ void CA_CacheMap (int mapnum)
     int32_t  expanded;
 #endif
 
-    if (mapheaderseg[mapnum]->width != MAPSIZE || mapheaderseg[mapnum]->height != MAPSIZE)
-        Quit ("CA_CacheMap: Map not %u*%u!",MAPSIZE,MAPSIZE);
-
 //
 // load the planes into the allready allocated buffers
 //

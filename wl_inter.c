@@ -260,8 +260,6 @@ Victory (void)
     if(screenHeight % 200 != 0)
         VL_ClearScreen(0);
 
-    MainMenu[savegame].active = 0;  // ADDEDFIX 3 - Tricob
-
 #ifndef SPEAR
     EndText ();
 #else

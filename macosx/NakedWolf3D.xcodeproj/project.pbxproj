@@ -13,7 +13,6 @@
 		2AD022E42802E3FA007DDEB6 /* wl_plane.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AD022D62802E3FA007DDEB6 /* wl_plane.c */; };
 		2AD022E52802E3FA007DDEB6 /* wl_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AD022D72802E3FA007DDEB6 /* wl_utils.c */; };
 		2AD022E62802E3FA007DDEB6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD022D92802E3FA007DDEB6 /* InfoPlist.strings */; };
-		2AD022E72802E3FA007DDEB6 /* wolf4sdl.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2AD022DB2802E3FA007DDEB6 /* wolf4sdl.icns */; };
 		2AD022E92802E3FA007DDEB6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2AD022E12802E3FA007DDEB6 /* Info.plist */; };
 		2AD022EB2802E3FA007DDEB6 /* wl_scale.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AD022E32802E3FA007DDEB6 /* wl_scale.c */; };
 		2AD022F72802ED38007DDEB6 /* sdl_wrap.c in Sources */ = {isa = PBXBuildFile; fileRef = 2AD022F62802ED37007DDEB6 /* sdl_wrap.c */; };
@@ -42,7 +41,7 @@
 		D901F5170FC0DBCB0040C290 /* id_vl.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4F70FC0DBCB0040C290 /* id_vl.c */; };
 		D901F51A0FC0DBCB0040C290 /* id_vh.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4FB0FC0DBCB0040C290 /* id_vh.c */; };
 		D901F51B0FC0DBCB0040C290 /* id_ca.c in Sources */ = {isa = PBXBuildFile; fileRef = D901F4FC0FC0DBCB0040C290 /* id_ca.c */; };
-		D94B84D50FC0F2F800EADB6F /* wolf4sdl.icns in Resources */ = {isa = PBXBuildFile; fileRef = D94B84D40FC0F2F800EADB6F /* wolf4sdl.icns */; };
+		D94B84D50FC0F2F800EADB6F /* NakedWolf.icns in Resources */ = {isa = PBXBuildFile; fileRef = D94B84D40FC0F2F800EADB6F /* NakedWolf.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,14 +69,13 @@
 		2AD022D62802E3FA007DDEB6 /* wl_plane.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wl_plane.c; path = ../wl_plane.c; sourceTree = "<group>"; };
 		2AD022D72802E3FA007DDEB6 /* wl_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wl_utils.c; path = ../wl_utils.c; sourceTree = "<group>"; };
 		2AD022DA2802E3FA007DDEB6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2AD022DB2802E3FA007DDEB6 /* wolf4sdl.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = wolf4sdl.icns; sourceTree = "<group>"; };
-		2AD022DC2802E3FA007DDEB6 /* Wolf4SDL.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Wolf4SDL.xcodeproj; sourceTree = "<group>"; };
+		2AD022DC2802E3FA007DDEB6 /* NakedWolf3D.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = NakedWolf3D.xcodeproj; sourceTree = "<group>"; };
 		2AD022E12802E3FA007DDEB6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AD022E32802E3FA007DDEB6 /* wl_scale.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wl_scale.c; path = ../wl_scale.c; sourceTree = "<group>"; };
 		2AD022F52802ED37007DDEB6 /* sdl_wrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sdl_wrap.h; path = ../sdl_wrap.h; sourceTree = "<group>"; };
 		2AD022F62802ED37007DDEB6 /* sdl_wrap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sdl_wrap.c; path = ../sdl_wrap.c; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* Wolf4SDL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wolf4SDL.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* NakedWolf3D.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NakedWolf3D.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D901F4C70FC0DBCB0040C290 /* id_in.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id_in.h; path = ../id_in.h; sourceTree = SOURCE_ROOT; };
 		D901F4C80FC0DBCB0040C290 /* f_spear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = f_spear.h; path = ../f_spear.h; sourceTree = SOURCE_ROOT; };
 		D901F4C90FC0DBCB0040C290 /* fmopl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = fmopl.h; path = ../mame/fmopl.h; sourceTree = SOURCE_ROOT; };
@@ -122,7 +120,7 @@
 		D901F4FA0FC0DBCB0040C290 /* id_vh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id_vh.h; path = ../id_vh.h; sourceTree = SOURCE_ROOT; };
 		D901F4FB0FC0DBCB0040C290 /* id_vh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = id_vh.c; path = ../id_vh.c; sourceTree = SOURCE_ROOT; };
 		D901F4FC0FC0DBCB0040C290 /* id_ca.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = id_ca.c; path = ../id_ca.c; sourceTree = SOURCE_ROOT; };
-		D94B84D40FC0F2F800EADB6F /* wolf4sdl.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = wolf4sdl.icns; sourceTree = "<group>"; };
+		D94B84D40FC0F2F800EADB6F /* NakedWolf.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = NakedWolf.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +166,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* Wolf4SDL.app */,
+				8D1107320486CEB800E47090 /* NakedWolf3D.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,7 +245,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D94B84D40FC0F2F800EADB6F /* wolf4sdl.icns */,
+				D94B84D40FC0F2F800EADB6F /* NakedWolf.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 			);
@@ -267,24 +265,18 @@
 			isa = PBXGroup;
 			children = (
 				2AD022D92802E3FA007DDEB6 /* InfoPlist.strings */,
-				2AD022DB2802E3FA007DDEB6 /* wolf4sdl.icns */,
-				2AD022DC2802E3FA007DDEB6 /* Wolf4SDL.xcodeproj */,
+				2AD022DC2802E3FA007DDEB6 /* NakedWolf3D.xcodeproj */,
 				2AD022E12802E3FA007DDEB6 /* Info.plist */,
 			);
 			name = macosx;
 			sourceTree = "<group>";
 		};
-		2AD022DD2802E3FA007DDEB6 /* Products */ = {
-			isa = PBXGroup;
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* Wolf4SDL */ = {
+		8D1107260486CEB800E47090 /* NakedWolf3D */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Wolf4SDL" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "NakedWolf3D" */;
 			buildPhases = (
 				002F39FD09D0883400EBEB88 /* Copy Frameworks into .app bundle */,
 				8D1107290486CEB800E47090 /* Resources */,
@@ -295,10 +287,10 @@
 			);
 			dependencies = (
 			);
-			name = Wolf4SDL;
+			name = NakedWolf3D;
 			productInstallPath = "$(HOME)/Applications";
 			productName = Untitled;
-			productReference = 8D1107320486CEB800E47090 /* Wolf4SDL.app */;
+			productReference = 8D1107320486CEB800E47090 /* NakedWolf3D.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -309,7 +301,7 @@
 			attributes = {
 				LastUpgradeCheck = 1310;
 			};
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Wolf4SDL" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "NakedWolf3D" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = en;
 			hasScannedForEncodings = 1;
@@ -322,15 +314,9 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Untitled */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2AD022DD2802E3FA007DDEB6 /* Products */;
-					ProjectRef = 2AD022DC2802E3FA007DDEB6 /* Wolf4SDL.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* Wolf4SDL */,
+				8D1107260486CEB800E47090 /* NakedWolf3D */,
 			);
 		};
 /* End PBXProject section */
@@ -342,9 +328,8 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				2AD022E62802E3FA007DDEB6 /* InfoPlist.strings in Resources */,
-				D94B84D50FC0F2F800EADB6F /* wolf4sdl.icns in Resources */,
+				D94B84D50FC0F2F800EADB6F /* NakedWolf.icns in Resources */,
 				2AD022E92802E3FA007DDEB6 /* Info.plist in Resources */,
-				2AD022E72802E3FA007DDEB6 /* wolf4sdl.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,8 +416,8 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				LIBRARY_SEARCH_PATHS = /Users/ats/Development/Libs;
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gibbon.plainwolf3d;
-				PRODUCT_NAME = Wolf4SDL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gibbon.nakedwolf3d;
+				PRODUCT_NAME = NakedWolf3D;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = YES;
 			};
@@ -463,8 +448,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				OTHER_CFLAGS = "-fast";
 				OTHER_CPLUSPLUSFLAGS = "-fast";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gibbon.plainwolf3d;
-				PRODUCT_NAME = Wolf4SDL;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gibbon.nakedwolf3d;
+				PRODUCT_NAME = NakedWolf3D;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 				ZERO_LINK = "";
@@ -575,7 +560,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Wolf4SDL" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "NakedWolf3D" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
@@ -584,7 +569,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Wolf4SDL" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "NakedWolf3D" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,

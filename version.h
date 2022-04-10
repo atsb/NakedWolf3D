@@ -49,9 +49,6 @@
 #define PLAYDEMOLIKEORIGINAL  // When playing or recording demos, several bug fixes do not take
                               // effect to let the original demos work as in the original Wolf3D v1.4
                               // (actually better, as the second demo rarely worked)
-//#define USE_GPL             // Replaces the MAME OPL emulator by the DosBox one, which is under a GPL license
-
-#define ADDEDFIX              // Post-revision 262 fixes described in http://diehardwolfers.areyep.com/viewtopic.php?t=6693
 
 #define FIXCALCROTATE         // Apply a modified version of Ginyu's fix to make CalcRotate more accurate at high resolutions
 
