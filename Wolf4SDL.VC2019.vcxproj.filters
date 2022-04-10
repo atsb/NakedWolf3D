@@ -132,6 +132,9 @@
     <ClCompile Include="mame\fmopl.c">
       <Filter>Source Files\mame</Filter>
     </ClCompile>
+    <ClCompile Include="sdl_wrap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="sodpal.inc">
@@ -225,6 +228,9 @@
     </ClInclude>
     <ClInclude Include="win\resource.h">
       <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sdl_wrap.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4014,6 +4014,7 @@ CheckForEpisodes (void)
 
     if(configdir[0] == 0)
     {
+#ifndef _WIN32
         // Set config location to home directory for multi-user support
         char *homedir = getenv("HOME");
         if(homedir == NULL)
@@ -4026,6 +4027,7 @@ CheckForEpisodes (void)
             Quit("Your $HOME directory path is too long. It cannot be used for saving games.");
         }
         snprintf(configdir, sizeof(configdir), "%s" WOLFDIR, homedir);
+#endif
     }
 
     if(configdir[0] != 0)
