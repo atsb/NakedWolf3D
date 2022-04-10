@@ -74,3 +74,5 @@ Makefile.win
 ##############
 /.vscode
 /build
+macosx/Wolf4SDL.xcodeproj/xcuserdata/ats.xcuserdatad/xcschemes/xcschememanagement.plist
+macosx/Wolf4SDL.xcodeproj/project.xcworkspace/xcuserdata/ats.xcuserdatad/UserInterfaceState.xcuserstate

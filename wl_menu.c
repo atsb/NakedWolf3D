@@ -4012,8 +4012,6 @@ CheckForEpisodes (void)
 {
     struct stat statbuf;
 
-    // On Linux like systems, the configdir defaults to $HOME/.wolf4sdl
-#if !defined(_WIN32) && !defined(_arch_dreamcast)
     if(configdir[0] == 0)
     {
         // Set config location to home directory for multi-user support
@@ -4022,14 +4020,13 @@ CheckForEpisodes (void)
         {
             Quit("Your $HOME directory is not defined. You must set this before playing.");
         }
-        #define WOLFDIR "/.wolf4sdl"
+        #define WOLFDIR "/Games/wolf3d"
         if(strlen(homedir) + sizeof(WOLFDIR) > sizeof(configdir))
         {
             Quit("Your $HOME directory path is too long. It cannot be used for saving games.");
         }
         snprintf(configdir, sizeof(configdir), "%s" WOLFDIR, homedir);
     }
-#endif
 
     if(configdir[0] != 0)
     {
