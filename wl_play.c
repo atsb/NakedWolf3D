@@ -2,8 +2,6 @@
 
 #include "wl_def.h"
 
-#include "wl_cloudsky.h"
-
 /*
 =============================================================================
 
@@ -39,9 +37,6 @@ int     extravbls;
 tiletype tilemap[MAPSIZE][MAPSIZE]; // wall values only
 bool     spotvis[MAPSIZE][MAPSIZE];
 objtype *actorat[MAPSIZE][MAPSIZE];
-#ifdef REVEALMAP
-bool     mapseen[MAPSIZE][MAPSIZE];
-#endif
 
 //
 // replacing refresh manager
@@ -625,24 +620,6 @@ void CheckKeys (void)
     }
 
     //
-    // OPEN UP DEBUG KEYS
-    //
-#ifdef DEBUGKEYS
-    if (Keyboard(sc_BackSpace) && Keyboard(sc_LShift) && Keyboard(sc_Alt) && param_debugmode)
-    {
-        ClearMemory ();
-        ClearSplitVWB ();
-
-        Message ("Debugging keys are\nnow available!");
-        IN_ClearKeysDown ();
-        IN_Ack ();
-
-        DrawPlayBorderSides ();
-        DebugOk = 1;
-    }
-#endif
-
-    //
     // TRYING THE KEEN CHEAT CODE!
     //
     if (Keyboard(sc_B) && Keyboard(sc_A) && Keyboard(sc_T))
@@ -723,39 +700,6 @@ void CheckKeys (void)
             IN_CenterMouse();     // Clear accumulated mouse movement
         return;
     }
-
-//
-// TAB-? debug keys
-//
-#ifdef DEBUGKEYS
-    if (Keyboard(sc_Tab) && DebugOk)
-    {
-        fontnumber = 0;
-        SETFONTCOLOR (0, 15);
-        if (DebugKeys () && viewsize < 20)
-        {
-            DrawPlayBorder ();       // dont let the blue borders flash
-
-            if (MousePresent && IN_IsInputGrabbed())
-                IN_CenterMouse();     // Clear accumulated mouse movement
-
-            lasttimecount = GetTimeCount();
-        }
-        return;
-    }
-#endif
-
-#ifdef VIEWMAP
-    if (Keyboard(sc_O))
-    {
-        ViewMap ();
-
-        if (MousePresent && IN_IsInputGrabbed())
-            IN_CenterMouse();     // Clear accumulated mouse movement
-
-        lasttimecount = GetTimeCount();
-    }
-#endif
 }
 
 

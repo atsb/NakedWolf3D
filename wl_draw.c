@@ -1,8 +1,6 @@
 // WL_DRAW.C
 
 #include "wl_def.h"
-#include "wl_cloudsky.h"
-#include "wl_atmos.h"
 
 /*
 =============================================================================
@@ -30,10 +28,6 @@ boolean fpscounter;
 
 int fps_frames=0, fps_time=0, fps=0;
 
-#if defined(USE_FLOORCEILINGTEX) || defined(USE_CLOUDSKY)
-int16_t *spanstart;
-#endif
-
 int16_t *wallheight;
 
 //
@@ -59,15 +53,8 @@ void    DrawScaleds (void);
 void    CalcTics (void);
 void    ThreeDRefresh (void);
 
-#ifdef USE_SKYWALLPARALLAX
-void    ScaleSkyPost();
-#endif
-
 int     postx;
 byte    *postsource;
-#ifdef USE_SKYWALLPARALLAX
-byte    *postsourcesky;
-#endif
 
 //
 // wall optimization variables
@@ -300,14 +287,6 @@ void ScalePost (void)
     int ywcount, yoffs, yw, yd, yendoffs;
     byte col;
 
-#ifdef USE_SKYWALLPARALLAX
-    if (tilehit == 16)
-    {
-        ScaleSkyPost();
-        return;
-    }
-#endif
-
     ywcount = yd = wallheight[postx] >> 3;
     if(yd <= 0) yd = 100;
 
@@ -352,46 +331,6 @@ void ScalePost (void)
         yendoffs -= bufferPitch;
     }
 }
-
-#ifdef USE_SKYWALLPARALLAX
-void ScaleSkyPost (void)
-{
-    int ywcount, yoffs, yendoffs, texoffs;
-    byte col;
-    int midy, y, skyheight;
-
-    skyheight = viewheight;
-    ywcount = wallheight[postx] >> 3;
-
-    midy = (viewheight / 2) - 1;
-
-    yoffs = midy * bufferPitch;
-    if(yoffs < 0) yoffs = 0;
-    yoffs += postx;
-
-    yendoffs = midy + (ywcount * 2) - 1;
-
-    if (yendoffs >= viewheight)
-        yendoffs = viewheight - 1;
-
-    int curang = pixelangle[postx] + midangle;
-    if(curang < 0)
-        curang += FINEANGLES;
-    else if(curang >= FINEANGLES)
-        curang -= FINEANGLES;
-    int xtex = curang * USE_SKYWALLPARALLAX * TEXTURESIZE / FINEANGLES;
-    texoffs = TEXTUREMASK - ((xtex & (TEXTURESIZE - 1)) << TEXTURESHIFT);
-
-    y = yendoffs;
-    yendoffs = yendoffs * bufferPitch + postx;
-    while(yoffs <= yendoffs)
-    {
-        vbuf[yendoffs] = postsourcesky[texoffs + (y * TEXTURESIZE) / skyheight];
-        yendoffs -= bufferPitch;
-        y--;
-    }
-}
-#endif
 
 /*
 ====================
@@ -451,9 +390,6 @@ void HitVertWall (void)
             wallpic = vertwall[tilehit];
     
         postsource = PM_GetPage(wallpic) + texture;
-#ifdef USE_SKYWALLPARALLAX
-        postsourcesky = postsource - texture;
-#endif
     }
 
     ScalePost ();
@@ -517,9 +453,6 @@ void HitHorizWall (void)
             wallpic = horizwall[tilehit];
     
         postsource = PM_GetPage(wallpic) + texture;
-#ifdef USE_SKYWALLPARALLAX
-        postsourcesky = postsource - texture;
-#endif
     }
 
     ScalePost ();
@@ -702,15 +635,7 @@ int CalcRotate (objtype *ob)
 {
     int angle, viewangle;
 
-    // this isn't exactly correct, as it should vary by a trig value,
-    // but it is close enough with only eight rotations
-
-#ifdef FIXCALCROTATE
-    viewangle = (int)( player->angle + (centerx - ob->viewx) / (8 * viewwidth / 320.0) );
-#else
     viewangle = player->angle + (centerx - ob->viewx)/8;
-#endif
-
 
     if (ob->obclass == rocketobj || ob->obclass == hrocketobj)
         angle = (viewangle-180) - ob->angle;
@@ -1102,9 +1027,6 @@ void WallRefresh (void)
             if ((ytilestep == -1 && yinttile <= ytile) || (ytilestep == 1 && yinttile >= ytile))
                 goto horizentry;
 vertentry:
-#ifdef REVEALMAP
-            mapseen[xtile][yinttile] = true;
-#endif
             //
             // get the wall value from tilemap
             //
@@ -1313,9 +1235,6 @@ passvert:
                 goto vertentry;
 
 horizentry:
-#ifdef REVEALMAP
-            mapseen[xinttile][ytile] = true;
-#endif
             //
             // get the wall value from tilemap
             //
@@ -1568,9 +1487,6 @@ void ThreeDRefresh (void)
     if (!tilemap[player->tilex][player->tiley] ||
          tilemap[player->tilex][player->tiley] & BIT_DOOR)
     spotvis[player->tilex][player->tiley] = true;       // Detect all sprites over player fix
-#ifdef REVEALMAP
-    mapseen[player->tilex][player->tiley] = true;
-#endif
 
     vbuf = VL_LockSurface(screenBuffer);
     if(vbuf == NULL) return;

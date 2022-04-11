@@ -664,9 +664,6 @@ void SetupGameLevel (void)
 //
     memset (tilemap,0,sizeof(tilemap));
     memset (actorat,0,sizeof(actorat));
-#ifdef REVEALMAP
-    memset (mapseen,0,sizeof(mapseen));
-#endif
     map = mapsegs[0];
     for (y=0;y<mapheight;y++)
     {
@@ -765,9 +762,6 @@ void SetupGameLevel (void)
 //
 // load floor/ceiling textures
 //
-#if defined(USE_FLOORCEILINGTEX) && !defined(USE_MULTIFLATS)
-    GetFlatTextures ();
-#endif
 
 //
 // have the caching manager load and purge stuff to make sure all marks
@@ -1125,7 +1119,6 @@ void RecordDemo (void) {return;}
 void PlayDemo (int demonumber)
 {
     int length;
-#ifdef DEMOSEXTERN
 // debug: load chunk
 #ifndef SPEARDEMO
     int dems[4]={T_DEMO0,T_DEMO1,T_DEMO2,T_DEMO3};
@@ -1134,19 +1127,15 @@ void PlayDemo (int demonumber)
 #endif
 
     demoptr = (int8_t *) grsegs[dems[demonumber]];
-#else
     demoname[4] = '0'+demonumber;
     CA_LoadFile (demoname,&demobuffer);
     demoptr = (int8_t *)demobuffer;
-#endif
 
     NewGame (1,0);
     gamestate.mapon = *demoptr++;
     gamestate.difficulty = gd_hard;
     length = READWORD((uint8_t *)demoptr);
-    // TODO: Seems like the original demo format supports 16 MB demos
-    //       But T_DEM00 and T_DEM01 of Wolf have a 0xd8 as third length size...
-    demoptr += 3;
+    demoptr++;
     lastdemoptr = demoptr-4+length;
 
     VW_FadeOut ();
@@ -1162,9 +1151,7 @@ void PlayDemo (int demonumber)
 
     PlayLoop ();
 
-#ifndef DEMOSEXTERN
     free (demobuffer);
-#endif
 
     demoplayback = false;
 

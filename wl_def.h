@@ -1011,9 +1011,6 @@ extern  objtype     *newobj,*player,*objfreelist,*killerobj;
 extern  tiletype    tilemap[MAPSIZE][MAPSIZE];      // wall values only
 extern  bool        spotvis[MAPSIZE][MAPSIZE];
 extern  objtype     *actorat[MAPSIZE][MAPSIZE];
-#ifdef REVEALMAP
-extern  bool        mapseen[MAPSIZE][MAPSIZE];
-#endif
 extern  boolean     singlestep,godmode,noclip,ammocheat,mapreveal;
 extern  int         extravbls;
 
@@ -1105,10 +1102,6 @@ extern  byte    *vbuf;
 extern  int32_t lasttimecount;
 extern  int32_t frameon;
 extern  boolean fizzlein,fpscounter;
-
-#if defined(USE_FLOORCEILINGTEX) || defined(USE_CLOUDSKY)
-extern  int16_t *spanstart;
-#endif
 extern  int16_t *wallheight;
 
 //
@@ -1398,15 +1391,9 @@ void GP2X_ButtonUp (int button);
 =============================================================================
 */
 
-#ifdef PLAYDEMOLIKEORIGINAL
-    #define DEMOCHOOSE_ORIG_SDL(orig, sdl) ((demorecord || demoplayback) ? (orig) : (sdl))
-    #define DEMOCOND_ORIG                  (demorecord || demoplayback)
-    #define DEMOIF_SDL                     if(DEMOCOND_SDL)
-#else
-    #define DEMOCHOOSE_ORIG_SDL(orig, sdl) (sdl)
-    #define DEMOCOND_ORIG                  false
-    #define DEMOIF_SDL
-#endif
+#define DEMOCHOOSE_ORIG_SDL(orig, sdl) ((demorecord || demoplayback) ? (orig) : (sdl))
+#define DEMOCOND_ORIG                  (demorecord || demoplayback)
+#define DEMOIF_SDL                     if(DEMOCOND_SDL)
 #define DEMOCOND_SDL                   (!DEMOCOND_ORIG)
 
 #define GetTicks() ((SDL_GetTicks()*7)/100)

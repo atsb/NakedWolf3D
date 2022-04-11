@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>PlainWolf3D</ProjectName>
+    <ProjectName>NakedWolf3D</ProjectName>
     <ProjectGuid>{411B026A-F58B-4E25-840B-4FE67710F762}</ProjectGuid>
     <RootNamespace>Wolf4SDL</RootNamespace>
   </PropertyGroup>
@@ -159,12 +159,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dc\dc_cd.c" />
-    <ClCompile Include="dc\dc_main.c" />
-    <ClCompile Include="dc\dc_maple.c" />
-    <ClCompile Include="dc\dc_video.c" />
-    <ClCompile Include="dc\dc_vmu.c" />
-    <ClCompile Include="dosbox\dbopl.cpp" />
     <ClCompile Include="id_ca.c" />
     <ClCompile Include="id_in.c" />
     <ClCompile Include="id_pm.c" />
@@ -179,16 +173,12 @@
     <ClCompile Include="wl_act1.c" />
     <ClCompile Include="wl_act2.c" />
     <ClCompile Include="wl_agent.c" />
-    <ClCompile Include="wl_atmos.c" />
-    <ClCompile Include="wl_cloudsky.c" />
     <ClCompile Include="wl_debug.c" />
     <ClCompile Include="wl_draw.c" />
     <ClCompile Include="wl_game.c" />
     <ClCompile Include="wl_inter.c" />
     <ClCompile Include="wl_main.c" />
     <ClCompile Include="wl_menu.c" />
-    <ClCompile Include="wl_parallax.c" />
-    <ClCompile Include="wl_plane.c" />
     <ClCompile Include="wl_play.c" />
     <ClCompile Include="wl_scale.c" />
     <ClCompile Include="wl_state.c" />
@@ -202,10 +192,7 @@
   <ItemGroup>
     <ClInclude Include="audiosod.h" />
     <ClInclude Include="audiowl6.h" />
-    <ClInclude Include="dc\dc_main.h" />
-    <ClInclude Include="dc\dc_vmu.h" />
     <ClInclude Include="dc_vmu.h" />
-    <ClInclude Include="dosbox\dbopl.h" />
     <ClInclude Include="foreign.h" />
     <ClInclude Include="f_spear.h" />
     <ClInclude Include="gfxv_apo.h" />
@@ -224,8 +211,6 @@
     <ClInclude Include="sdl_wrap.h" />
     <ClInclude Include="version.h" />
     <ClInclude Include="win\resource.h" />
-    <ClInclude Include="wl_atmos.h" />
-    <ClInclude Include="wl_cloudsky.h" />
     <ClInclude Include="wl_def.h" />
     <ClInclude Include="wl_menu.h" />
   </ItemGroup>

@@ -726,7 +726,6 @@ void ShowArticle (char *article)
 //===========================================================================
 
 #ifndef JAPAN
-#ifdef ARTSEXTERN
 int     endextern = T_ENDART1;
 #ifndef SPEAR
 int     helpextern = T_HELPART;
@@ -748,9 +747,7 @@ void HelpScreens (void)
 {
     int     artnum;
     char    *text;
-#ifndef ARTSEXTERN
     void    *layout;
-#endif
 
 
 #ifdef JAPAN
@@ -759,24 +756,16 @@ void HelpScreens (void)
     FreeMusic ();
 #else
 
-#ifdef ARTSEXTERN
-    artnum = helpextern;
-    text = (char *)grsegs[artnum];
-#else
     CA_LoadFile (helpfilename,&layout);
     text = (char *)layout;
-#endif
 
     ShowArticle (text);
 
-#ifndef ARTSEXTERN
     free(layout);
-#endif
 
     VW_FadeOut();
 
     FreeMusic ();
-#endif
 }
 #endif
 
@@ -787,9 +776,7 @@ void EndText (void)
 {
     int     artnum;
     char    *text;
-#ifndef ARTSEXTERN
     void    *layout;
-#endif
 
     ClearMemory ();
 
@@ -806,23 +793,13 @@ void EndText (void)
     FreeMusic ();
 #else
 
-
-
-#ifdef ARTSEXTERN
-    artnum = endextern+gamestate.episode;
-    text = (char *)grsegs[artnum];
-#else
     endfilename[6] = '1'+gamestate.episode;
     CA_LoadFile (endfilename,&layout);
     text = (char *)layout;
-#endif
 
     ShowArticle (text);
 
-#ifndef ARTSEXTERN
     free(layout);
-#endif
-
 
     VW_FadeOut();
     SETFONTCOLOR(0,15);

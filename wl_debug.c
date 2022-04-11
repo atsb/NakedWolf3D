@@ -8,10 +8,6 @@
 
 #include "wl_def.h"
 
-#ifdef USE_CLOUDSKY
-#include "wl_cloudsky.h"
-#endif
-
 /*
 =============================================================================
 
@@ -28,8 +24,6 @@
 
 =============================================================================
 */
-
-#ifdef DEBUGKEYS
 
 int DebugKeys (void);
 
@@ -125,9 +119,6 @@ void PictureGrabber (void)
     IN_Ack();
 }
 
-
-#ifndef VIEWMAP
-
 /*
 ===================
 =
@@ -147,12 +138,6 @@ void BasicOverhead (void)
     zoom = 128 / MAPSIZE;
     offx = 160;
     offy = (160 - (MAPSIZE * zoom)) / 2;
-
-#ifdef MAPBORDER
-    temp = viewsize;
-    NewViewSize (16);
-    DrawPlayBorder ();
-#endif
 
     //
     // right side (raw)
@@ -200,14 +185,7 @@ void BasicOverhead (void)
 
     VW_UpdateScreen ();
     IN_Ack ();
-
-#ifdef MAPBORDER
-    NewViewSize (temp);
-    DrawPlayBorder ();
-#endif
 }
-
-#endif
 
 
 /*
@@ -615,20 +593,6 @@ again:
 
         return 1;
     }
-#ifdef REVEALMAP
-    else if (Keyboard(sc_M))        // M = Map reveal
-    {
-        mapreveal ^= true;
-        CenterWindow (18,3);
-        if (mapreveal)
-            US_PrintCentered ("Map reveal ON");
-        else
-            US_PrintCentered ("Map reveal OFF");
-        VW_UpdateScreen();
-        IN_Ack ();
-        return 1;
-    }
-#endif
     else if (Keyboard(sc_N))        // N = no clip
     {
         noclip^=1;
@@ -641,13 +605,11 @@ again:
         IN_Ack ();
         return 1;
     }
-#ifndef VIEWMAP
     else if (Keyboard(sc_O))        // O = basic overhead
     {
         BasicOverhead();
         return 1;
     }
-#endif
     else if(Keyboard(sc_P))         // P = Ripper's picture grabber
     {
         PictureGrabber();
@@ -725,61 +687,9 @@ again:
         IN_Ack ();
         return 1;
     }
-#ifdef USE_CLOUDSKY
-    else if(Keyboard(sc_Z) && curSky)
-    {
-        char defstr[15];
-
-        CenterWindow(34,4);
-        PrintY+=6;
-        US_Print("  Recalculate sky with seed: ");
-        int seedpx = px, seedpy = py;
-        US_PrintUnsigned(curSky->seed);
-        US_Print("\n  Use color map (0-");
-        US_PrintUnsigned(numColorMaps - 1);
-        US_Print("): ");
-        int mappx = px, mappy = py;
-        US_PrintUnsigned(curSky->colorMapIndex);
-        VW_UpdateScreen();
-
-        sprintf(defstr, "%u", curSky->seed);
-        esc = !US_LineInput(seedpx, seedpy, str, defstr, true, 10, 0);
-        if(esc) return 1;
-        curSky->seed = (uint32_t) atoi(str);
-
-        sprintf(defstr, "%u", curSky->colorMapIndex);
-        esc = !US_LineInput(mappx, mappy, str, defstr, true, 10, 0);
-        if(esc) return 1;
-        uint32_t newInd = (uint32_t) atoi(str);
-        if(newInd < (uint32_t) numColorMaps)
-        {
-            curSky->colorMapIndex = newInd;
-            InitSky();
-        }
-        else
-        {
-            CenterWindow (18,3);
-            US_PrintCentered ("Illegal color map!");
-            VW_UpdateScreen();
-            IN_Ack ();
-        }
-    }
-#endif
 
     return 0;
 }
-
-#endif
-
-/*
-=============================================================================
-
-                                 OVERHEAD MAP
-
-=============================================================================
-*/
-
-#ifdef VIEWMAP
 
 #define COL_FLOOR   0x19                // empty area color
 #define COL_SECRET  WHITE               // pushwall color
@@ -971,13 +881,6 @@ void OverheadRefresh (void)
         {
             sx = (x - maporgx) * tilesize;
             sy = (y - maporgy) * tilesize;
-#ifdef REVEALMAP
-            if (!mapseen[x][y] && !mapreveal)
-            {
-                DrawMapFloor (sx,sy,BLACK);
-                continue;
-            }
-#endif
             tile = (uintptr_t)actorat[x][y];
 
             if (tile)
@@ -1134,5 +1037,3 @@ void ViewMap (void)
     if (viewsize != 21)
         DrawPlayScreen ();
 }
-
-#endif

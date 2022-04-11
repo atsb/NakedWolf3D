@@ -7,7 +7,6 @@
 #endif
 
 #include "wl_def.h"
-#include "wl_atmos.h"
 #include <SDL_syswm.h>
 
 
@@ -381,11 +380,6 @@ boolean SaveTheGame(FILE *file,int x,int y)
     DiskFlopAnim(x,y);
     fwrite(tilemap,sizeof(tilemap),1,file);
     checksum = DoChecksum((byte *)tilemap,sizeof(tilemap),checksum);
-#ifdef REVEALMAP
-    DiskFlopAnim(x,y);
-    fwrite(mapseen,sizeof(mapseen),1,file);
-    checksum = DoChecksum((byte *)mapseen,sizeof(mapseen),checksum);
-#endif
     DiskFlopAnim(x,y);
 
     for(i=0;i<mapwidth;i++)
@@ -505,11 +499,6 @@ boolean LoadTheGame(FILE *file,int x,int y)
     DiskFlopAnim(x,y);
     fread (tilemap,sizeof(tilemap),1,file);
     checksum = DoChecksum((byte *)tilemap,sizeof(tilemap),checksum);
-#ifdef REVEALMAP
-    DiskFlopAnim(x,y);
-    fread (mapseen,sizeof(mapseen),1,file);
-    checksum = DoChecksum((byte *)mapseen,sizeof(mapseen),checksum);
-#endif
     DiskFlopAnim(x,y);
 
     for(i=0;i<mapwidth;i++)
@@ -707,10 +696,6 @@ void BuildTables (void)
     }
     sintable[ANGLEQUAD] = 65536;
     sintable[3*ANGLEQUAD] = -65536;
-
-#if defined(USE_STARSKY) || defined(USE_RAIN) || defined(USE_SNOW)
-    Init3DPoints();
-#endif
 }
 
 //===========================================================================
@@ -1576,14 +1561,7 @@ static void DemoLoop()
 
         VW_FadeOut ();
 
-#ifdef DEBUGKEYS
-        if (Keyboard(sc_Tab) && param_debugmode)
-            RecordDemo ();
-        else
-            US_ControlPanel (0);
-#else
         US_ControlPanel (0);
-#endif
 
         if (startgame || loadedgame)
         {

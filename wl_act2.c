@@ -3074,34 +3074,11 @@ void T_Chase (objtype *ob)
         dx = abs(ob->tilex - player->tilex);
         dy = abs(ob->tiley - player->tiley);
         dist = dx>dy ? dx : dy;
-
-#ifdef PLAYDEMOLIKEORIGINAL
-        if(DEMOCOND_ORIG)
-        {
-            if(!dist || (dist == 1 && ob->distance < 0x4000))
-                chance = 300;
-            else
-                chance = (tics<<4)/dist;
-        }
+		
+        if(!dist || (dist == 1 && ob->distance < 0x4000))
+            chance = 300;
         else
-#endif
-        {
-            if (dist)
-                chance = (tics<<4)/dist;
-            else
-                chance = 300;
-
-            if (dist == 1)
-            {
-                target = abs(ob->x - player->x);
-                if (target < 0x14000l)
-                {
-                    target = abs(ob->y - player->y);
-                    if (target < 0x14000l)
-                        chance = 300;
-                }
-            }
-        }
+            chance = (tics<<4)/dist;
 
         if ( US_RndT()<chance)
         {

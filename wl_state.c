@@ -163,32 +163,7 @@ void NewState (objtype *ob, statetype *state)
     }                                               \
 }
 
-#ifdef PLAYDEMOLIKEORIGINAL
-    #define DOORCHECK                                   \
-            if(DEMOCOND_ORIG)                           \
-                doornum = temp&63;                      \
-            else                                        \
-            {                                           \
-                doornum = (int) temp & ~BIT_DOOR;       \
-                if (ob->obclass != ghostobj             \
-                    && ob->obclass != spectreobj)       \
-                {                                       \
-                    OpenDoor(doornum);                  \
-                    ob->distance = -doornum - 1;        \
-                    return true;                        \
-                }                                       \
-            }
-#else
-    #define DOORCHECK                                   \
-            doornum = (int) temp & ~BIT_DOOR;           \
-            if (ob->obclass != ghostobj                 \
-                && ob->obclass != spectreobj)           \
-            {                                           \
-                OpenDoor(doornum);                      \
-                ob->distance = -doornum - 1;            \
-                return true;                            \
-            }
-#endif
+#define DOORCHECK doornum = temp&63;
 
 #define CHECKSIDE(x,y)                                  \
 {                                                       \
@@ -344,15 +319,12 @@ boolean TryWalk (objtype *ob)
                 Quit ("Walk: Bad dir");
         }
     }
-
-#ifdef PLAYDEMOLIKEORIGINAL
     if (doornum != -1)
     {
         OpenDoor(doornum);
         ob->distance = -doornum-1;
         return true;
     }
-#endif
 
     ob->areanumber = MAPSPOT(ob->tilex,ob->tiley,0) - AREATILE;
     ob->distance = TILEGLOBAL;
