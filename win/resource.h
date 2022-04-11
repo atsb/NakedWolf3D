@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by Wolf4SDL.rc
+// Used by NakedWolf3D.rc
 //
 
 // Next default values for new objects

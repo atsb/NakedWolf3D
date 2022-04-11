@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8D1107260486CEB800E47090"
-               BuildableName = "Wolf4SDL.app"
+               BuildableName = "NakedWolf3D.app"
                BlueprintName = "NakedWolf3D"
                ReferencedContainer = "container:NakedWolf3D.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "Wolf4SDL.app"
+            BuildableName = "NakedWolf3D.app"
             BlueprintName = "NakedWolf3D"
             ReferencedContainer = "container:NakedWolf3D.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8D1107260486CEB800E47090"
-            BuildableName = "Wolf4SDL.app"
+            BuildableName = "NakedWolf3D.app"
             BlueprintName = "NakedWolf3D"
             ReferencedContainer = "container:NakedWolf3D.xcodeproj">
          </BuildableReference>

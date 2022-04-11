@@ -1788,10 +1788,11 @@ void CheckParameters(int argc, char *argv[])
     {
         if(hasError) printf("\n");
         printf(
-            "Wolf4SDL v2.0\n"
+            "NakedWolf3D v2.0\n"
             "Ported by Chaos-Software, additions by the community\n"
+			"Vanilla Redux (NakedWolf3D) by Gibbon, based on Wolf4SDL\n"
             "Original Wolfenstein 3D by id Software\n\n"
-            "Usage: Wolf4SDL [options]\n"
+            "Usage: NakedWolf3D [options]\n"
             "Options:\n"
             " --help                 This help page\n"
             " --tedlevel <level>     Starts the game in the given level\n"
@@ -1801,16 +1802,6 @@ void CheckParameters(int argc, char *argv[])
             " --hard                 Sets the difficulty to hard for tedlevel\n"
             " --nowait               Skips intro screens\n"
             " --windowed[-mouse]     Starts the game in a window [and grabs mouse]\n"
-            " --res <width> <height> Sets the screen resolution\n"
-            "                        (must be multiple of 320x200 or 320x240)\n"
-            " --resf <w> <h>         Sets any screen resolution >= 320x200\n"
-            "                        (which may result in graphic errors)\n"
-            " --bits <b>             Sets the screen color depth\n"
-            "                        (use this when you have palette/fading problems\n"
-            "                        allowed: 8, 16, 24, 32, default: \"best\" depth)\n"
-            " --nodblbuf             Don't use SDL's double buffering\n"
-            " --extravbls <vbls>     Sets a delay after each frame, which may help to\n"
-            "                        reduce flickering (unit is currently 8 ms, default: 0)\n"
             " --joystick <index>     Use the index-th joystick if available\n"
             "                        (-1 to disable joystick, default: 0)\n"
             " --joystickhat <index>  Enables movement with the given coolie hat\n"
@@ -1820,10 +1811,10 @@ void CheckParameters(int argc, char *argv[])
             " --ignorenumchunks      Ignores the number of chunks in VGAHEAD.*\n"
             "                        (may be useful for some broken mods)\n"
             " --configdir <dir>      Directory where config file and save games are stored\n"
-#if defined(_arch_dreamcast) || defined(_WIN32)
+#if defined(_WIN32)
             "                        (default: current directory)\n"
 #else
-            "                        (default: $HOME/.wolf4sdl)\n"
+            "                        (default: $HOME/Games/nakedwolf3d)\n"
 #endif
 #if defined(SPEAR) && !defined(SPEARDEMO)
             " --mission <mission>    Mission number to play (0-3)\n"
