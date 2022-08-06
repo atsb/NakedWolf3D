@@ -2,7 +2,7 @@ CONFIG ?= config.default
 -include $(CONFIG)
 
 
-BINARY    ?= wolf4sdl
+BINARY    ?= nakedwolf3d
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)
 
