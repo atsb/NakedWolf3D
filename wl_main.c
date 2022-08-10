@@ -1789,7 +1789,6 @@ void CheckParameters(int argc, char *argv[])
         if(hasError) printf("\n");
         printf(
             "NakedWolf3D v2.0\n"
-            "Ported by Chaos-Software, additions by the community\n"
 			"Vanilla Redux (NakedWolf3D) by Gibbon, based on Wolf4SDL\n"
             "Original Wolfenstein 3D by id Software\n\n"
             "Usage: NakedWolf3D [options]\n"

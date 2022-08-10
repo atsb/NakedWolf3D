@@ -1,18 +1,11 @@
-Wolf4SDL by Moritz "Ripper" Kroll (http://www.chaos-software.de.vu - OFFLINE)
-Original Wolfenstein 3D by id Software (http://www.idsoftware.com)
-Modifications to r262 by Andy_Nonymous and others
-(http://diehardwolfers.areyep.com/viewtopic.php?t=6693)
-=============================================================================
-
-Wolf4SDL is an open-source port of id Software's classic first-person shooter
-Wolfenstein 3D to the cross-platform multimedia library "Simple DirectMedia
-Layer (SDL)" (http://www.libsdl.org). It is meant to keep the original feel
-while taking advantage of some improvements mentioned in the list below.
-
+NakedWolf3d is an open-source port of id Software's classic first-person shooter
+Wolfenstein 3D (1992) by ID Software based on Wolf4SDL. 
+The objective is to:
+aim to be vanilla accurate with nothing added and nothing taken away. 
+Exactly as it was in 1992, not for youngsters who cannot handle 320x200.
 
 Main features:
 --------------
-
  - Cross-platform:
       Supported operating systems are at least:
        - Windows 98, Windows ME, Windows 2000, Windows XP, Windows Vista
@@ -20,8 +13,7 @@ Main features:
        - Linux
        - BSD variants
        - Mac OS X (x86)
-       - KallistiOS (used for Dreamcast)
-      Only little endian platforms like x86, ARM and SH-4 are currently supported.
+	   - KallistiOS (used for Dreamcast)
 
  - AdLib sounds and music:
       This port includes the OPL2 emulator from MAME, so you can not only
@@ -39,9 +31,8 @@ Main features:
 
 Additional features:
 --------------------
-
  - Two additional view sizes:
-      Wolf4SDL supports one view size using the full width of the screen
+      NakedWolf3d supports one view size using the full width of the screen
       and showing the status bar, like in Mac-enstein, and one view size
       filling the whole screen (press TAB to see the status bar).
 
@@ -67,7 +58,6 @@ Additional features:
       parallax sky, cloud sky and outside atmosphere features, which
       can be easily activated in version.h.
 
-
 The following versions of Wolfenstein 3D data files are currently supported
 by the source code (choose the version by commenting/uncommenting lines in
 version.h as described in that file):
@@ -85,33 +75,19 @@ version.h as described in that file):
  - Spear of Destiny - Mission 2: Return to Danger (not tested)
  - Spear of Destiny - Mission 3: Ultimate Challenge (not tested)
 
-
 How to play:
 ------------
-
-To play Wolfenstein 3D with Wolf4SDL, you just have to copy the original data
-files (e.g. *.WL6) into the same directory as the Wolf4SDL executable.
+To play Wolfenstein 3D with NakedWolf3D, you just have to copy the original data
+files (e.g. *.WL6) into the same directory as the NakedWolf3D executable.
 Please make sure, that you use the correct version of the executable with the
 according data files version as the differences are hardcoded into the binary!
-
-On Windows SDL.dll and SDL_mixer.dll must also be copied into this directory.
-
-SDL 1.2.15 Runtimes can be acquired at: 
-https://www.libsdl.org/download-1.2.php and download "SDL-1.2.15-win32.zip"
-
-SDL_mixer 1.2.12 Runtimes can be acquired at:
-https://www.libsdl.org/projects/SDL_mixer/release-1.2.html and download "SDL_mixer-1.2.12-win32.zip"
-
-! ATTENTION ! Do NOT download the x64 version of SDL or SDL_mixer. x86 binairies are required.
 
 If you play in windowed mode (--windowed parameter), press SCROLLLOCK or F12
 to grab the mouse. Press it again to release the mouse.
 
-
 Usage:
 ------
-
-Wolf4SDL supports the following command line options:
+NakedWolf3D supports the following command line options:
  --help                 This help page
  --tedlevel <level>     Starts the game in the given level
  --baby                 Sets the difficulty to baby for tedlevel
@@ -150,44 +126,39 @@ For Spear of Destiny the following additional options are available:
 
 Compiling from source code:
 ---------------------------
-
 The current version of the source code is available on GitHub at:
-   https://github.com/AryanWolf3D/Wolf4SDL
+   https://github.com/wolfysdl/NakedWolf3D
 
-The following ways of compiling the source code are supported:
- - Makefile (for Linux, BSD variants and MinGW/MSYS)
- - Visual C++ 2019 (Wolf4SDL.VC2019.sln and Wolf4SDL.VC2019.vcproj) (see README-VC.txt)
- - Visual C++ 2008 (Wolf4SDL.VC9.sln and Wolf4SDL.VC9.vcproj)
- - Visual C++ 2005 (Wolf4SDL.sln and Wolf4SDL.vcproj)
- - Visual C++ 6 (Wolf4SDL.dsw and Wolf4SDL.dsp)
- - Code::Blocks 8.02 (Wolf4SDL.cbp)
- - Dev-C++ 5.0 Beta 9.2 (4.9.9.2) (Wolf4SDL.dev) (see README-devcpp.txt)
- - Xcode (for Mac OS X, macosx/Wolf4SDL.xcodeproj/project.pbxproj)
- - Special compiling for Dreamcast (see README-dc.txt)
- - Special compiling for GP2X (see README-GP2X.txt)
+If you want to get the Wolf4SDL For the major improvents 
+and avoid the purpose of NakedWolf3d Find At:
+	https://github.com/Doom-modding-and-etc/Wolf4SDL
 
-To compile the source code you need the development libraries of
+To compile the source code you need(For now) the development libraries of
  - SDL (https://www.libsdl.org/download-1.2.php) and
+ 
  - SDL_mixer (https://www.libsdl.org/projects/SDL_mixer/release-1.2.html)
 and have to adjust the include and library paths in the projects accordingly.
 
-Please note, that there is no official SDL_mixer development pack for MinGW,
-yet, but you can get the needed files from a Dev-C++ package here:
-http://sourceforge.net/project/showfiles.php?group_id=94270&package_id=151751
-Just rename the file extension from ".devpack" to ".tar.bz2" and unpack it
-with for example WinRAR. Then add the directories include/SDL and lib to the
-according search paths in your project.
+ - SDL2 2.0.22 Runtimes can be acquired at:
+https://www.libsdl.org/download-2.0.php and download "SDL_mixer-2.0.22-win32.zip"
+
+- SDL_mixer 2.0.4 Runtimes can be acquired at:
+https://www.libsdl.org/projects/SDL_mixer/ and download "SDL_mixer-2.0.4-win32.zip"
+
+
+! ATTENTION ! Do NOT download the x64 version of SDL or SDL_mixer. x86 binairies are required.
+
+The following ways of compiling the source code are supported:
+ - Makefile (for Linux, BSD variants and MinGW/MSYS)
+ - Visual C++ 2022 (NakedWolf3d..sln and NakedWolf3D.vcproj)
+ - Xcode (for Mac OS X, macosx/Wolf4SDL.xcodeproj/project.pbxproj)
 
 IMPORTANT: Do not forget to take care of version.h!
    By default it compiles for "Wolfenstein 3D v1.4 full GT/ID/Activision"!
 
-
 TODOs:
 ------
-
- - Center non-ingame screens for resolutions being a multiple of 320x240
- - Add support for any graphic resolution >= 320x200
-
+- Remove SDL 
 
 Known bugs:
 -----------
@@ -204,7 +175,6 @@ Troubleshooting:
 
 Credits:
 --------
-
  - Special thanks to id Software! Without the source code we would still have
    to pelt Wolfenstein 3D with hex editors and disassemblers ;D
  - Special thanks to the DOSBox team for providing a GPL'ed OPL2/3 emulator!
@@ -219,15 +189,12 @@ Credits:
  - Thanks to Xilinx, Inc. for providing a list of maximum-length LFSR counters
    used for higher resolutions of fizzle fade
 
-
 Licenses:
 ---------
-
  - The original source code of Wolfenstein 3D:
      At your choice:
      - license-id.txt or
      - license-gpl.txt
  - The OPL2 emulator:
      At your choice:
-     - license-mame.txt (fmopl.cpp)
-     - license-gpl.txt (dbopl.cpp, USE_GPL define in version.h or set GPL=1 for Makefile)
+     - license-mame.txt (fmopl.c)
