@@ -107,8 +107,15 @@ void    VL_SetVGAPlaneMode(void)
 	//ATSB: Stuck in my DisplayMode as local variables for the SDL window and video scaling only
 	//ATSB: So that it looks better upscaled to a decent resolution, however all scaling
 	//ATSB: Remains at 4:3 320x200 so that nothing is stretched on widescreen resolutions.
+	
+	//ATSB: No idea why, but Windows vs Linux behaves differently...
+#ifdef _WIN32
 	screenWidth = DispMode.h * 3.0 / 4.0;
 	screenHeight = DispMode.w * 3.0 / 4.0;
+#else
+	screenWidth = DispMode.w * 3.0 / 4.0;
+	screenHeight = DispMode.h * 3.0 / 4.0;
+#endif
 
 	window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight,
 		(fullscreen ? SDL_WINDOW_FULLSCREEN : 0) | SDL_WINDOW_OPENGL);
