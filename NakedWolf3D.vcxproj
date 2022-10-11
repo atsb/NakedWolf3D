@@ -22,6 +22,7 @@
     <ProjectName>NakedWolf3D</ProjectName>
     <ProjectGuid>{411B026A-F58B-4E25-840B-4FE67710F762}</ProjectGuid>
     <RootNamespace>NakedWolf3D</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -144,15 +145,16 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Ad4m\Games\DEV\sdl2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WINDOWS_IGNORE_PACKING_MISMATCH ;_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\MSVC\SDL2_mixer-devel-2.6.2-VC\SDL2_mixer-2.6.2\include;C:\MSVC\SDL2-devel-2.24.1-VC\SDL2-2.24.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WIN32;_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib;SDL_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\Ad4m\Games\DEV\sdl2;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\MSVC\SDL2_mixer-devel-2.6.2-VC\SDL2_mixer-2.6.2\lib\x64;C:\MSVC\SDL2-devel-2.24.1-VC\SDL2-2.24.1\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -165,39 +167,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="id_ca.c" />
-    <ClCompile Include="id_in.c" />
-    <ClCompile Include="id_pm.c" />
-    <ClCompile Include="id_sd.c" />
-    <ClCompile Include="id_us.c" />
-    <ClCompile Include="id_vh.c" />
-    <ClCompile Include="id_vl.c" />
-    <ClCompile Include="mame\fmopl.c" />
-    <ClCompile Include="sdl_winmain.c" />
-    <ClCompile Include="sdl_wrap.c" />
-    <ClCompile Include="signon.c" />
-    <ClCompile Include="wl_act1.c" />
-    <ClCompile Include="wl_act2.c" />
-    <ClCompile Include="wl_agent.c" />
-    <ClCompile Include="wl_debug.c" />
-    <ClCompile Include="wl_draw.c" />
-    <ClCompile Include="wl_game.c" />
-    <ClCompile Include="wl_inter.c" />
-    <ClCompile Include="wl_main.c" />
-    <ClCompile Include="wl_menu.c" />
-    <ClCompile Include="wl_play.c" />
-    <ClCompile Include="wl_scale.c" />
-    <ClCompile Include="wl_state.c" />
-    <ClCompile Include="wl_text.c" />
-    <ClCompile Include="wl_utils.c" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="sodpal.inc" />
     <None Include="wolfpal.inc" />
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="win\Wolf4SDL.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="win\Wolf4SDL.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="crt.cpp" />
+    <ClCompile Include="fmopl.cpp" />
+    <ClCompile Include="id_ca.cpp" />
+    <ClCompile Include="id_in.cpp" />
+    <ClCompile Include="id_pm.cpp" />
+    <ClCompile Include="id_sd.cpp" />
+    <ClCompile Include="id_us_1.cpp" />
+    <ClCompile Include="id_vh.cpp" />
+    <ClCompile Include="id_vl.cpp" />
+    <ClCompile Include="signon.cpp" />
+    <ClCompile Include="wl_act1.cpp" />
+    <ClCompile Include="wl_act2.cpp" />
+    <ClCompile Include="wl_agent.cpp" />
+    <ClCompile Include="wl_draw.cpp" />
+    <ClCompile Include="wl_game.cpp" />
+    <ClCompile Include="wl_inter.cpp" />
+    <ClCompile Include="wl_main.cpp" />
+    <ClCompile Include="wl_menu.cpp" />
+    <ClCompile Include="wl_play.cpp" />
+    <ClCompile Include="wl_state.cpp" />
+    <ClCompile Include="wl_text.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="audiosod.h" />
     <ClInclude Include="audiowl6.h" />
+    <ClInclude Include="crt.h" />
+    <ClInclude Include="fmopl.h" />
     <ClInclude Include="foreign.h" />
     <ClInclude Include="f_spear.h" />
     <ClInclude Include="gfxv_apo.h" />
@@ -212,22 +218,12 @@
     <ClInclude Include="id_us.h" />
     <ClInclude Include="id_vh.h" />
     <ClInclude Include="id_vl.h" />
-    <ClInclude Include="mame\fmopl.h" />
     <ClInclude Include="sdl_wrap.h" />
+    <ClInclude Include="unistd_win.h" />
     <ClInclude Include="version.h" />
-    <ClInclude Include="win\resource.h" />
     <ClInclude Include="wl_def.h" />
     <ClInclude Include="wl_menu.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="win\Wolf4SDL.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Changes.txt" />
-    <Text Include="README.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="win\Wolf4SDL.ico" />
+    <ClInclude Include="wl_utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

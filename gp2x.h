@@ -42,10 +42,10 @@ void GP2X_Init();
 void GP2X_Shutdown();
 void GP2X_StartMMUHack();
 
-void GP2X_AdjustVolume( int direction );
-void GP2X_ButtonDown( int button );
-void GP2X_ButtonUp( int button );
-void Screenshot( void );
-void SetKeyboard( unsigned int key, int press );
+void GP2X_AdjustVolume(int direction);
+void GP2X_ButtonDown(int button);
+void GP2X_ButtonUp(int button);
+void Screenshot(void);
+void SetKeyboard(unsigned int key, int press);
 
 #endif // GP2X_H

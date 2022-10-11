@@ -5,11 +5,8 @@
 //
 /////////////////////////////////////////////////
 
-#ifndef __AUDIOSOD_H_
-#define __AUDIOSOD_H_
-
-#define NUMSOUNDS		    81
-#define NUMSNDCHUNKS	    267
+#define NUMSOUNDS           81
+#define NUMSNDCHUNKS        267
 
 //
 // Sound names & indexes
@@ -102,10 +99,10 @@ typedef enum {
 //
 // Base offsets
 //
-#define STARTPCSOUNDS		0
-#define STARTADLIBSOUNDS	81
-#define STARTDIGISOUNDS		162
-#define STARTMUSIC		    243
+#define STARTPCSOUNDS       0
+#define STARTADLIBSOUNDS    81
+#define STARTDIGISOUNDS     162
+#define STARTMUSIC          243
 
 //
 // Music names & indexes
@@ -143,5 +140,3 @@ typedef enum {
 // Thanks for playing with MUSE!
 //
 /////////////////////////////////////////////////
-
-#endif

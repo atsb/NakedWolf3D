@@ -5,38 +5,29 @@ CONFIG ?= config.default
 BINARY    ?= nakedwolf3d
 PREFIX    ?= /usr/local
 MANPREFIX ?= $(PREFIX)
+UNAME := $(shell uname -s)
 
 INSTALL         ?= install
 INSTALL_PROGRAM ?= $(INSTALL) -m 555 -s
 INSTALL_MAN     ?= $(INSTALL) -m 444
 INSTALL_DATA    ?= $(INSTALL) -m 444
 
-ifeq ($(SDL_MAJOR_VERSION),1)
-	SDL_CONFIG  ?= sdl-config
-else
-	SDL_CONFIG  ?= sdl2-config
-endif
+
+SDL_CONFIG  ?= sdl2-config
 CFLAGS_SDL  ?= $(shell $(SDL_CONFIG) --cflags)
 LDFLAGS_SDL ?= $(shell $(SDL_CONFIG) --libs)
 
 
 CFLAGS += $(CFLAGS_SDL)
 
-#CFLAGS += -Wall
-#CFLAGS += -W
+CFLAGS += -Wall
 CFLAGS += -g
 CFLAGS += -Wpointer-arith
 CFLAGS += -Wreturn-type
 CFLAGS += -Wwrite-strings
 CFLAGS += -Wcast-align
 
-ifdef GPL
-    CFLAGS += -DUSE_GPL
-endif
-
-
 CCFLAGS += $(CFLAGS)
-CCFLAGS += -std=gnu99
 CCFLAGS += -Werror-implicit-function-declaration
 CCFLAGS += -Wimplicit-int
 CCFLAGS += -Wsequence-point
@@ -44,44 +35,30 @@ CCFLAGS += -Wsequence-point
 CXXFLAGS += $(CFLAGS)
 
 LDFLAGS += $(LDFLAGS_SDL)
-ifeq ($(SDL_MAJOR_VERSION),1)
-	LDFLAGS += -lSDL_mixer
-else
-	LDFLAGS += -lSDL2_mixer
-endif
-ifneq (,$(findstring MINGW,$(shell uname -s)))
-LDFLAGS += -static-libgcc
-endif
+LDFLAGS += -lSDL2_mixer
 
 SRCS :=
-ifndef GPL
-    SRCS += mame/fmopl.c
-else
-    SRCS += dosbox/dbopl.cpp
-endif
-SRCS += sdl_wrap.c
-SRCS += id_ca.c
-SRCS += id_in.c
-SRCS += id_pm.c
-SRCS += id_sd.c
-SRCS += id_us.c
-SRCS += id_vh.c
-SRCS += id_vl.c
-SRCS += signon.c
-SRCS += wl_act1.c
-SRCS += wl_act2.c
-SRCS += wl_agent.c
-SRCS += wl_debug.c
-SRCS += wl_draw.c
-SRCS += wl_game.c
-SRCS += wl_inter.c
-SRCS += wl_main.c
-SRCS += wl_menu.c
-SRCS += wl_play.c
-SRCS += wl_scale.c
-SRCS += wl_state.c
-SRCS += wl_text.c
-SRCS += wl_utils.c
+SRCS += fmopl.cpp
+SRCS += id_ca.cpp
+SRCS += id_in.cpp
+SRCS += id_pm.cpp
+SRCS += id_sd.cpp
+SRCS += id_us_1.cpp
+SRCS += id_vh.cpp
+SRCS += id_vl.cpp
+SRCS += signon.cpp
+SRCS += wl_act1.cpp
+SRCS += wl_act2.cpp
+SRCS += wl_agent.cpp
+SRCS += wl_draw.cpp
+SRCS += wl_game.cpp
+SRCS += wl_inter.cpp
+SRCS += wl_main.cpp
+SRCS += wl_menu.cpp
+SRCS += wl_play.cpp
+SRCS += wl_state.cpp
+SRCS += wl_text.cpp
+SRCS += crt.cpp
 
 DEPS = $(filter %.d, $(SRCS:.c=.d) $(SRCS:.cpp=.d))
 OBJS = $(filter %.o, $(SRCS:.c=.o) $(SRCS:.cpp=.o))
@@ -123,7 +100,7 @@ $(BINARY): $(OBJS)
 
 clean distclean:
 	@echo '===> CLEAN'
-	$(Q)rm -fr $(DEPS) $(OBJS) $(BINARY) $(BINARY).exe
+	$(Q)rm -fr $(DEPS) $(OBJS) $(BINARY)
 
 install: $(BINARY)
 	@echo '===> INSTALL'

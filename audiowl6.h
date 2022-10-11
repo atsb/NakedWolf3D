@@ -5,9 +5,6 @@
 //
 /////////////////////////////////////////////////
 
-#ifndef __AUDIOWL6_H_
-#define __AUDIOWL6_H_
-
 //
 // Sound names & indexes
 //
@@ -107,10 +104,10 @@ typedef enum {
 //
 // Base offsets
 //
-#define STARTPCSOUNDS		0
-#define STARTADLIBSOUNDS	LASTSOUND
-#define STARTDIGISOUNDS		(2*LASTSOUND)
-#define STARTMUSIC		    (3*LASTSOUND)
+#define STARTPCSOUNDS       0
+#define STARTADLIBSOUNDS    LASTSOUND
+#define STARTDIGISOUNDS     (2*LASTSOUND)
+#define STARTMUSIC          (3*LASTSOUND)
 
 //
 // Music names & indexes
@@ -146,13 +143,11 @@ typedef enum {
 	LASTMUSIC
 } musicnames;
 
-#define NUMSOUNDS		    LASTSOUND
-#define NUMSNDCHUNKS		(STARTMUSIC + LASTMUSIC)
+#define NUMSOUNDS           LASTSOUND
+#define NUMSNDCHUNKS        (STARTMUSIC + LASTMUSIC)
 
 /////////////////////////////////////////////////
 //
 // Thanks for playing with MUSE!
 //
 /////////////////////////////////////////////////
-
-#endif
