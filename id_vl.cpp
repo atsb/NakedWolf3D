@@ -21,10 +21,10 @@ boolean fullscreen = true;
 
 boolean usedoublebuffering = true;
 
-//ATSB: Thes stubs are just here for show, they are overwritten
-//ATSB: Using SDL2 DisplayMode further down.
-unsigned screenWidth = 320;    //ATSB: Stubs
-unsigned screenHeight = 200;   //ATSB: Stubs
+//ATSB: Global resolution for correct display of various things in the game like intermissions.
+//ATSB: This goes along with the scaling to ensure it all looks nice.
+unsigned screenWidth = 320;
+unsigned screenHeight = 200;
 
 unsigned screenBits = -1;      // use "best" color depth according to libSDL
 
@@ -104,10 +104,11 @@ void    VL_SetVGAPlaneMode(void)
 	SDL_GetCurrentDisplayMode(0, &DispMode);
 
 	//Adjust height so the screen is 4:3 aspect ratio
-	//ATSB: Stuck in my DisplayMode
+	//ATSB: Stuck in my DisplayMode as local variables for the SDL window and video scaling only
 	//ATSB: So that it looks better upscaled to a decent resolution, however all scaling
 	//ATSB: Remains at 4:3 320x200 so that nothing is stretched on widescreen resolutions.
-	screenHeight = DispMode.w * 3.0 / 4.0;
+	unsigned screenWidth = DispMode.w * 3.0 / 4.0;
+	unsigned screenHeight = DispMode.h * 3.0 / 4.0;
 
 	window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight,
 		(fullscreen ? SDL_WINDOW_FULLSCREEN : 0) | SDL_WINDOW_OPENGL);
