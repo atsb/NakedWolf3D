@@ -171,12 +171,6 @@
     <None Include="wolfpal.inc" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="win\Wolf4SDL.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="win\Wolf4SDL.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="crt.cpp" />
     <ClCompile Include="fmopl.cpp" />
     <ClCompile Include="id_ca.cpp" />
@@ -224,6 +218,12 @@
     <ClInclude Include="wl_def.h" />
     <ClInclude Include="wl_menu.h" />
     <ClInclude Include="wl_utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="win\NakedWolf3D.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="win\NakedWolf3D.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
