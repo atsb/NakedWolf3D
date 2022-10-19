@@ -167,63 +167,62 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="sodpal.inc" />
     <None Include="wolfpal.inc" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="crt.cpp" />
-    <ClCompile Include="fmopl.cpp" />
-    <ClCompile Include="id_ca.cpp" />
-    <ClCompile Include="id_in.cpp" />
-    <ClCompile Include="id_pm.cpp" />
-    <ClCompile Include="id_sd.cpp" />
-    <ClCompile Include="id_us_1.cpp" />
-    <ClCompile Include="id_vh.cpp" />
-    <ClCompile Include="id_vl.cpp" />
-    <ClCompile Include="signon.cpp" />
-    <ClCompile Include="wl_act1.cpp" />
-    <ClCompile Include="wl_act2.cpp" />
-    <ClCompile Include="wl_agent.cpp" />
-    <ClCompile Include="wl_draw.cpp" />
-    <ClCompile Include="wl_game.cpp" />
-    <ClCompile Include="wl_inter.cpp" />
-    <ClCompile Include="wl_main.cpp" />
-    <ClCompile Include="wl_menu.cpp" />
-    <ClCompile Include="wl_play.cpp" />
-    <ClCompile Include="wl_state.cpp" />
-    <ClCompile Include="wl_text.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="audiosod.h" />
-    <ClInclude Include="audiowl6.h" />
-    <ClInclude Include="crt.h" />
-    <ClInclude Include="fmopl.h" />
-    <ClInclude Include="foreign.h" />
-    <ClInclude Include="f_spear.h" />
-    <ClInclude Include="gfxv_apo.h" />
-    <ClInclude Include="gfxv_jap.h" />
-    <ClInclude Include="gfxv_sod.h" />
-    <ClInclude Include="gfxv_wl6.h" />
-    <ClInclude Include="gp2x.h" />
-    <ClInclude Include="id_ca.h" />
-    <ClInclude Include="id_in.h" />
-    <ClInclude Include="id_pm.h" />
-    <ClInclude Include="id_sd.h" />
-    <ClInclude Include="id_us.h" />
-    <ClInclude Include="id_vh.h" />
-    <ClInclude Include="id_vl.h" />
+    <ClInclude Include="AUDIOWL6.H" />
+    <ClInclude Include="CRT.H" />
+    <ClInclude Include="FMOPL.H" />
+    <ClInclude Include="FOREIGN.H" />
+    <ClInclude Include="F_SPEAR.H" />
+    <ClInclude Include="GFXV_APO.H" />
+    <ClInclude Include="GFXV_JAP.H" />
+    <ClInclude Include="GFXV_SOD.H" />
+    <ClInclude Include="GFXV_WL6.H" />
+    <ClInclude Include="GP2X.H" />
+    <ClInclude Include="ID_CA.H" />
+    <ClInclude Include="ID_IN.H" />
+    <ClInclude Include="ID_PM.H" />
+    <ClInclude Include="ID_SD.H" />
+    <ClInclude Include="ID_US.H" />
+    <ClInclude Include="ID_VH.H" />
+    <ClInclude Include="ID_VL.H" />
     <ClInclude Include="sdl_wrap.h" />
-    <ClInclude Include="unistd_win.h" />
-    <ClInclude Include="version.h" />
-    <ClInclude Include="wl_def.h" />
-    <ClInclude Include="wl_menu.h" />
-    <ClInclude Include="wl_utils.h" />
+    <ClInclude Include="UNISTD_WIN.H" />
+    <ClInclude Include="VERSION.H" />
+    <ClInclude Include="WL_DEF.H" />
+    <ClInclude Include="WL_MENU.H" />
+    <ClInclude Include="WL_UTILS.H" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="win\NakedWolf3D.ico" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="win\NakedWolf3D.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CRT.CPP" />
+    <ClCompile Include="FMOPL.CPP" />
+    <ClCompile Include="ID_CA.CPP" />
+    <ClCompile Include="ID_IN.CPP" />
+    <ClCompile Include="ID_PM.CPP" />
+    <ClCompile Include="ID_SD.CPP" />
+    <ClCompile Include="ID_US_1.CPP" />
+    <ClCompile Include="ID_VH.CPP" />
+    <ClCompile Include="ID_VL.CPP" />
+    <ClCompile Include="SIGNON.CPP" />
+    <ClCompile Include="WL_ACT1.CPP" />
+    <ClCompile Include="WL_ACT2.CPP" />
+    <ClCompile Include="WL_AGENT.CPP" />
+    <ClCompile Include="WL_DRAW.CPP" />
+    <ClCompile Include="WL_GAME.CPP" />
+    <ClCompile Include="WL_INTER.CPP" />
+    <ClCompile Include="WL_MAIN.CPP" />
+    <ClCompile Include="WL_MENU.CPP" />
+    <ClCompile Include="WL_PLAY.CPP" />
+    <ClCompile Include="WL_STATE.CPP" />
+    <ClCompile Include="WL_TEXT.CPP" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
