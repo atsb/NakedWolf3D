@@ -146,6 +146,13 @@ extern  volatile ScanCode   LastScan;
 extern           int        JoyNumButtons;
 extern           boolean    forcegrabmouse;
 
+struct JoystickSens
+{
+	int sensitivity;
+	int deadzone;
+};
+extern JoystickSens* JoySensitivity;
+
 // Function prototypes
 #define IN_KeyDown(code)    (Keyboard[(code)])
 #define IN_ClearKey(code)   {Keyboard[code] = false;\
@@ -179,4 +186,6 @@ void    IN_StartAck(void);
 boolean IN_CheckAck(void);
 bool    IN_IsInputGrabbed();
 
+int		IN_GetJoyAxis(int axis);
+int		IN_JoyAxes(void);
 #endif

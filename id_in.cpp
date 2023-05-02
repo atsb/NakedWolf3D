@@ -129,7 +129,16 @@ static KeyboardDef KbdDefs = {
 };
 
 static SDL_Joystick* Joystick;
+static SDL_GameController* GameController;
+// Flip the right stick axes to match usual mapping of Joystick API.
+static SDL_GameControllerAxis GameControllerAxisMap[SDL_CONTROLLER_AXIS_MAX] = {
+	SDL_CONTROLLER_AXIS_LEFTX, SDL_CONTROLLER_AXIS_LEFTY, // X, Y
+	SDL_CONTROLLER_AXIS_RIGHTY, SDL_CONTROLLER_AXIS_RIGHTX, // Z, R
+	SDL_CONTROLLER_AXIS_TRIGGERLEFT, SDL_CONTROLLER_AXIS_TRIGGERRIGHT
+};
+JoystickSens* JoySensitivity;
 int JoyNumButtons;
+int JoyNumAxes;
 static int JoyNumHats;
 
 static bool GrabInput = false;
@@ -213,35 +222,26 @@ INL_GetMouseButtons(void)
 ///////////////////////////////////////////////////////////////////////////
 void IN_GetJoyDelta(int* dx, int* dy)
 {
-	if (!Joystick)
+	int x, y;
+
+	if (!GameController)
 	{
 		*dx = *dy = 0;
 		return;
 	}
 
-	SDL_JoystickUpdate();
+	SDL_GameControllerUpdate();
+	x = SDL_GameControllerGetAxis(GameController, SDL_CONTROLLER_AXIS_RIGHTX) >> 8;
+	y = SDL_GameControllerGetAxis(GameController, SDL_CONTROLLER_AXIS_LEFTY) >> 8;
 
-	int x = SDL_JoystickGetAxis(Joystick, 0) >> 8;
-	int y = SDL_JoystickGetAxis(Joystick, 1) >> 8;
-
-	if (param_joystickhat != -1)
-	{
-		uint8_t hatState = SDL_JoystickGetHat(Joystick, param_joystickhat);
-		if (hatState & SDL_HAT_RIGHT)
-			x += 127;
-		else if (hatState & SDL_HAT_LEFT)
-			x -= 127;
-		if (hatState & SDL_HAT_DOWN)
-			y += 127;
-		else if (hatState & SDL_HAT_UP)
-			y -= 127;
-
-		if (x < -128) x = -128;
-		else if (x > 127) x = 127;
-
-		if (y < -128) y = -128;
-		else if (y > 127) y = 127;
-	}
+	if (SDL_GameControllerGetButton(GameController, SDL_CONTROLLER_BUTTON_DPAD_RIGHT))
+		x += 127;
+	else if (SDL_GameControllerGetButton(GameController, SDL_CONTROLLER_BUTTON_DPAD_LEFT))
+		x -= 127;
+	if (SDL_GameControllerGetButton(GameController, SDL_CONTROLLER_BUTTON_DPAD_DOWN))
+		y += 127;
+	else if (SDL_GameControllerGetButton(GameController, SDL_CONTROLLER_BUTTON_DPAD_UP))
+		y -= 127;
 
 	*dx = x;
 	*dy = y;
@@ -255,16 +255,16 @@ void IN_GetJoyDelta(int* dx, int* dy)
 ///////////////////////////////////////////////////////////////////////////
 void IN_GetJoyFineDelta(int* dx, int* dy)
 {
-	if (!Joystick)
+	if (!GameController)
 	{
 		*dx = 0;
 		*dy = 0;
 		return;
 	}
 
-	SDL_JoystickUpdate();
-	int x = SDL_JoystickGetAxis(Joystick, 0);
-	int y = SDL_JoystickGetAxis(Joystick, 1);
+	SDL_GameControllerUpdate();
+	int x = SDL_GameControllerGetAxis(GameController, SDL_CONTROLLER_AXIS_RIGHTX) >> 8;
+	int y = SDL_GameControllerGetAxis(GameController, SDL_CONTROLLER_AXIS_LEFTY) >> 8;
 
 	if (x < -128) x = -128;
 	else if (x > 127) x = 127;
@@ -274,6 +274,11 @@ void IN_GetJoyFineDelta(int* dx, int* dy)
 
 	*dx = x;
 	*dy = y;
+}
+
+int IN_GetJoyAxis(int axis)
+{
+	return SDL_GameControllerGetAxis(GameController, GameControllerAxisMap[axis]);
 }
 
 /*
@@ -286,19 +291,50 @@ void IN_GetJoyFineDelta(int* dx, int* dy)
 
 int IN_JoyButtons()
 {
-	if (!Joystick) return 0;
-
-	SDL_JoystickUpdate();
+	SDL_GameControllerUpdate();
 
 	int res = 0;
-	for (int i = 0; i < JoyNumButtons && i < 32; i++)
-		res |= SDL_JoystickGetButton(Joystick, i) << i;
+	for (int i = 0; i < JoyNumButtons; ++i)
+	{
+		if (SDL_GameControllerGetButton(GameController, (SDL_GameControllerButton)i))
+		{
+			// Allow controllers or PS4/PS5 controllers to use the game controller API
+			// to enter the menu.
+			if (i == SDL_CONTROLLER_BUTTON_START)
+				US_ControlPanel(buttonstate[bt_esc] = true );
+			else if (i == SDL_CONTROLLER_BUTTON_TOUCHPAD)
+				US_ControlPanel(buttonstate[bt_esc] = true);
+			else
+				res |= 1 << i;
+		}
+	}
 	return res;
+
+	if (!GameController)
+		return 0;
 }
 
 boolean IN_JoyPresent()
 {
-	return Joystick != NULL;
+	return GameController != NULL;
+}
+
+int IN_JoyAxes(void)
+{
+	SDL_GameControllerUpdate();
+	int res = 0;
+	for (int i = 0; i < JoyNumAxes; ++i)
+	{
+		int16_t pos = SDL_GameControllerGetAxis(GameController, (SDL_GameControllerAxis)GameControllerAxisMap[i]);
+		if (pos <= -0x1000)
+			res |= 1 << (i * 2);
+		else if (pos >= 0x1000)
+			res |= 1 << (i * 2 + 1);
+	}
+	return res;
+
+	if (!GameController)
+		return 0;
 }
 
 static void processEvent(SDL_Event* event)
@@ -429,17 +465,16 @@ IN_Startup(void)
 
 	IN_ClearKeysDown();
 
-	if (param_joystickindex >= 0 && param_joystickindex < SDL_NumJoysticks())
+	if (SDL_InitSubSystem(SDL_INIT_GAMECONTROLLER) == 0 && SDL_IsGameController(param_joystickindex))
 	{
-		Joystick = SDL_JoystickOpen(param_joystickindex);
-		if (Joystick)
-		{
-			JoyNumButtons = SDL_JoystickNumButtons(Joystick);
-			if (JoyNumButtons > 32) JoyNumButtons = 32;      // only up to 32 buttons are supported
-			JoyNumHats = SDL_JoystickNumHats(Joystick);
-			if (param_joystickhat < -1 || param_joystickhat >= JoyNumHats)
-				Quit("The joystickhat param must be between 0 and %i!", JoyNumHats - 1);
-		}
+		GameController = SDL_GameControllerOpen(param_joystickindex);
+		printf("Using game controller: %s\n", SDL_GameControllerName(GameController));
+		SDL_GameControllerEventState(SDL_IGNORE);
+		JoyNumButtons = SDL_CONTROLLER_BUTTON_MAX;
+		JoyNumAxes = SDL_CONTROLLER_AXIS_MAX;
+		JoyNumHats = 0;
+
+		JoySensitivity = new JoystickSens[JoyNumAxes];
 	}
 
 	SDL_EventState(SDL_MOUSEMOTION, SDL_IGNORE);
@@ -467,8 +502,8 @@ IN_Shutdown(void)
 	if (!IN_Started)
 		return;
 
-	if (Joystick)
-		SDL_JoystickClose(Joystick);
+	if (GameController)
+		SDL_GameControllerClose(GameController);
 
 	IN_Started = false;
 }
