@@ -36,7 +36,7 @@ boolean MousePresent;
 boolean forcegrabmouse;
 
 //  Global variables
-std::unordered_map<int, boolean> Keyboard = {
+std::unordered_map<int, bool> Keyboard = {
 	{sc_None, false},
 	{sc_Return, false},
 	{sc_Escape, false},

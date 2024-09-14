@@ -8,7 +8,7 @@
 #ifndef crt_h
 #define crt_h
 
-#include <SDL.h>
+#include <SDL2/SDL.h>
 
 extern SDL_Color curpal[256];
 

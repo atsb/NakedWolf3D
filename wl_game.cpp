@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include "wl_def.h"
-#include <SDL_mixer.h>
+#include <SDL2/SDL_mixer.h>
 
 #pragma hdrstop
 

@@ -137,7 +137,7 @@ typedef struct {
 		joyMultXH, joyMultYH;
 } JoystickDef;
 // Global variables
-extern  std::unordered_map<int, boolean>    Keyboard;
+extern  std::unordered_map<int, bool>    Keyboard;
 //I do not see multiple threads reading this
 extern           boolean    MousePresent;
 extern  volatile boolean    Paused;

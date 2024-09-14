@@ -10,7 +10,7 @@
 //This is so contributors don't have to keep up with outdated C code that is a mess.
 
 #include "crt.h"
-#include <SDL.h>
+#include <SDL2/SDL.h>
 #include "id_vl.h"
 
 void CRT_DAC(void) {
